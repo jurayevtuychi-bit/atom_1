@@ -209,7 +209,7 @@
                             <i class="fa-solid fa-book-open-reader"></i>
                         </div>
                         <h4 class="font-bold text-sm">Nazariy qism</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Ma'ruzalar, postulatlar va modellar</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Rangli va batafsil ma'ruzalar</p>
                     </div>
 
                     <div onclick="switchTab('practice')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-purple-500/50 transition-all active:scale-95 group">
@@ -254,7 +254,7 @@
             </div>
         </section>
 
-        <!-- 2. NAZARIY MA'LUMOTLAR -->
+        <!-- 2. NAZARIY MA'LUMOTLAR (RANGLI VA >500 BELGI) -->
         <section id="tab-theory" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-lg font-bold"><i class="fa-solid fa-book-open text-cyan-600 dark:text-cyan-400 mr-2"></i>Nazariy Ma'lumotlar</h2>
@@ -513,7 +513,7 @@
             </div>
         </section>
 
-        <!-- 5. 5 TA KROSSVORD (Javobsiz, to'liq interaktiv) -->
+        <!-- 5. 5 TA KROSSVORD (Javobsiz) -->
         <section id="tab-crossword" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
                 <div>
@@ -525,7 +525,6 @@
                 </button>
             </div>
 
-            <!-- Krossvord tanlash menyusi (1 dan 5 gacha) -->
             <div class="grid grid-cols-5 gap-1.5">
                 <button onclick="selectCrossword(0)" id="cw-nav-0" class="py-2 rounded-xl bg-amber-600 text-white font-bold text-xs">1-Mavzu</button>
                 <button onclick="selectCrossword(1)" id="cw-nav-1" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">2-Mavzu</button>
@@ -570,7 +569,7 @@
                 <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-xl"><i class="fa-solid fa-atom"></i></div>
                 <div>
                     <h3 class="font-bold text-sm">Atom Fizikasi Mobil Ilovasi</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Versiya 2.5 (10 Masala + 5 Krossvord)</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Versiya 2.6 (Rangli Nazariya > 500 belgi)</p>
                 </div>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Ushbu dastur talabalar va o'quvchilar uchun Atom va Yadro fizikasi fanidan mukammal interaktiv mobil qo'llanmadir.</p>
@@ -640,13 +639,140 @@
             }
         }
 
+        /* --- NAZARIYA MA'LUMOTLARI (RANGLI BLOKLAR, >500 BELGI) --- */
         const theoryTopics = [
-            { id: 1, title: "1. Atom tuzilishi. Tomson va Rezerford modellari", tag: "Atom modellari", icon: "fa-atom", color: "cyan", summary: "J.J. Tomson va E. Rezerford modellari.", content: `<p>J.J. Tomson modeli (1904-yil) va Rezerfordning alfa-zarralar sochilishi tajribasi (1911).</p>` },
-            { id: 2, title: "2. Niels Bor postulatlari va Vodorod spektri", tag: "Kvant postulatlari", icon: "fa-circle-nodes", color: "purple", summary: "Statsionar holatlar va chastotalar qoidasi.", content: `<p>Bor postulatlari va vodorod atomi spektrining qonuniyatlari.</p>` },
-            { id: 3, title: "3. Korpuskulyar-to'lqin dualizmi. De-Broyl", tag: "Kvant mexanikasi", icon: "fa-wave-square", color: "emerald", summary: "Lui de-Broyl to'lqinlari va noaniqlik prinsipi.", content: `<p>Mikrozarralarning to'lqin tabiati va de-Broyl formulasi.</p>` },
-            { id: 4, title: "4. Kvant sonlari va Pauli prinsipi", tag: "Elektron qobiqlar", icon: "fa-layer-group", color: "amber", summary: "Bosh, orbital, magnit va spin kvant sonlari.", content: `<p>Atomdagi elektronlar holatini belgilovchi 4 ta kvant soni.</p>` },
-            { id: 5, title: "5. Atom yadrosi tuzilishi va Bog'lanish energiyasi", tag: "Yadro fizikasi", icon: "fa-circle-radiation", color: "rose", summary: "Proton-neytron modeli va massa defekti.", content: `<p>Nuklonlar, yadro massa defekti va bog'lanish energiyasi.</p>` },
-            { id: 6, title: "6. Radioaktivlik va Yadro reaksiyalari", tag: "Yadro fizikasi", icon: "fa-biohazard", color: "emerald", summary: "Alfa, beta, gamma yemirilish va qonunlar.", content: `<p>Radioaktiv yemirilish qonuni va yadro reaksiyalari.</p>` }
+            {
+                id: 1,
+                title: "1. Atom tuzilishi. Tomson va Rezerford modellari",
+                tag: "Atom modellari",
+                icon: "fa-atom",
+                color: "cyan",
+                summary: "J.J. Tomsonning «keksdagi mayiz» modeli va E. Rezerfordning alfa-zarralar sochilishi tajribasi.",
+                content: `
+                    <div class="p-3 bg-cyan-500/10 border-l-4 border-cyan-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-cyan-600 dark:text-cyan-400 mb-1">Kirish va Tomson modeli (1904)</h4>
+                        <p>J.J. Tomson elektronni kashf etgach, atomni musbat zaryad bilan to'ldirilgan va ichida manfiy elektronlar joylashgan shar shaklida tasavvur qildi. Uni ko'pchilik «keksdagi mayiz» modeliga o'xshatishadi.</p>
+                    </div>
+                    <div class="p-3 bg-purple-500/10 border-l-4 border-purple-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-purple-600 dark:text-purple-400 mb-1">Rezerfordning alfa-zarralar sochilishi (1911)</h4>
+                        <p>Ernest Rezerford o'z shogirdlari bilan birgalikda yupqa oltin folgaga radioaktiv elementdan chiqayotgan alfa-zarralarni yo'naltirdi. Tajriba shuni ko'rsatdiki, zarralarning aksariyati deyarli og'ishmay o'tib ketadi, ammo juda oz qismi (taxminan 8000 tadan bittasi) 90° dan katta burchakka og'adi, ayrimlari esa hatto ortga qaytadi.</p>
+                    </div>
+                    <div class="p-3 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl">
+                        <h4 class="font-bold text-emerald-600 dark:text-emerald-400 mb-1">Planetar model xulosalari</h4>
+                        <p>Ushbu tajribaga asoslanib, Rezerford atomning <b>planetar modelini</b> yaratdi: atom markazida uning deyarli barcha massasi va musbat zaryadi to'plangan o'ta zich <b>yadro</b> mavjud bo'lib, elektronlar uning atrofida orbitalar bo'ylab aylanib yuradi.</p>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "2. Niels Bor postulatlari va Vodorod spektri",
+                tag: "Kvant postulatlari",
+                icon: "fa-circle-nodes",
+                color: "purple",
+                summary: "Klassik fizika inqirozi, Borning statsionar holatlar postulati va chastotalar qoidasi.",
+                content: `
+                    <div class="p-3 bg-indigo-500/10 border-l-4 border-indigo-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Klassik fizika inqirozi</h4>
+                        <p>Rezerfordning planetar modeliga ko'ra, tezlanish bilan harakatlanayotgan elektron doimiy ravishda elektromagnit to'lqin nurlatishi va natijada spiralsimon yadryga qulab tushishi kerak edi. Biroq tabiatda atomlar cheksiz turg'un. Bu ziddiyatni 1913-yilda daniyalik fizik <b>Niels Bor</b> hal qildi.</p>
+                    </div>
+                    <div class="p-3 bg-cyan-500/10 border-l-4 border-cyan-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-cyan-600 dark:text-cyan-400 mb-1">I Postulat (Statsionar orbitlar)</h4>
+                        <p>Atomdagi elektronlar istalgan traektoriya bo'yicha emas, balki faqat shunday maxsus statsionar orbitalar bo'ylab harakatlanadiki, bunda ular energiya nurlatmaydi. Orbita bo'yicha impuls momenti quyidagicha kvantlanadi: m·v·r = n·ħ.</p>
+                    </div>
+                    <div class="p-3 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl">
+                        <h4 class="font-bold text-amber-600 dark:text-amber-400 mb-1">II Postulat (Chastotalar qoidasi)</h4>
+                        <p>Elektron bir statsionar holatdan (Eₙ) boshqasiga (Eₖ) o'tgandagina foton nurlanadi yoki yutiladi. Nurlanadigan foton energiyasi sathlar farqiga teng: <b>hν = Eₙ - Eₖ</b>.</p>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "3. Korpuskulyar-to'lqin dualizmi. De-Broyl",
+                tag: "Kvant mexanikasi",
+                icon: "fa-wave-square",
+                color: "emerald",
+                summary: "Mikrozarralarning ikkiyoqlama tabiati, Lui de-Broyl formulasi va Geyzenberg tamoyili.",
+                content: `
+                    <div class="p-3 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-emerald-600 dark:text-emerald-400 mb-1">De-Broyl gipotezasi (1924)</h4>
+                        <p>Fizikada yorug'lik ham zarra (foton), ham to'lqin xossasiga egaligi allaqachon ma'lum edi. Fransuz fizigi <b>Lui de-Broyl</b> simmetriya qonunidan kelib chiqib, barcha moddiy zarralar (elektron, proton, atomlar) ham o'zida to'lqin xususiyatlarini namoyon qiladi degan fundamental gipotezani o'rtaga tashladi.</p>
+                    </div>
+                    <div class="p-3 bg-teal-500/10 border-l-4 border-teal-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-teal-600 dark:text-teal-400 mb-1">De-Broyl to'lqin uzunligi</h4>
+                        <p>Har qanday p = m·v impuls bilan harakatlanayotgan zarraga quyidagi to'lqin uzunligi mos keladi: <b>λ = h / p = h / (m·v)</b>. Makroskopik jismlar uchun massa juda katta bo'lganidan bu to'lqin sezilmaydi, ammo elektronlar uchun difraksiya tajribalarida aniq kuzatiladi.</p>
+                    </div>
+                    <div class="p-3 bg-cyan-500/10 border-l-4 border-cyan-500 rounded-r-xl">
+                        <h4 class="font-bold text-cyan-600 dark:text-cyan-400 mb-1">Geyzenberg noaniqlik prinsipi</h4>
+                        <p>Mikrozarralar uchun koordinata va impulsni bir vaqtning o'zida mutlaq aniqlikda bilib bo'lmaydi: <b>Δx · Δpₓ ≥ ħ / 2</b>.</p>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "4. Kvant sonlari va Pauli prinsipi",
+                tag: "Elektron qobiqlar",
+                icon: "fa-layer-group",
+                color: "amber",
+                summary: "Bosh, orbital, magnit va spin kvant sonlari hamda Mendeleyev sistemasining fizik asosi.",
+                content: `
+                    <div class="p-3 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-amber-600 dark:text-amber-400 mb-1">To'rtta kvant soni</h4>
+                        <p>Atomdagi har bir elektronning holati to'liq tavsiflanishi uchun 4 ta kvant soni ishlatiladi: <b>Bosh kvant soni (n)</b> energiyani, <b>Orbital kvant soni (l)</b> fazoviy shaklni, <b>Magnit kvant soni (mₗ)</b> fazoviy yo'nalishni va <b>Spin kvant soni (mₛ)</b> esa elektronning o'z o'qi atrofidagi xususiy aylanish yo'nalishini belgilaydi.</p>
+                    </div>
+                    <div class="p-3 bg-orange-500/10 border-l-4 border-orange-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-orange-600 dark:text-orange-400 mb-1">Pauli taqiq prinsipi</h4>
+                        <p>V. Pauli tomonidan kiritilgan ushbu prinsipga ko'ra, atomda barcha to'rttala kvant soni bir xil bo'lgan ikkita elektron bir vaqtning o'zida mavjud bo'la olmaydi. Har bir energetik holatda faqat bitta elektron turishi mumkin.</p>
+                    </div>
+                    <div class="p-3 bg-yellow-500/10 border-l-4 border-yellow-500 rounded-r-xl">
+                        <h4 class="font-bold text-yellow-600 dark:text-yellow-400 mb-1">Qobiqlar sig'imi</h4>
+                        <p>Har bir qobiqda joylashadigan elektronlarning maksimal soni formula orqali topiladi: <b>N_max = 2n²</b>.</p>
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                title: "5. Atom yadrosi va Bog'lanish energiyasi",
+                tag: "Yadro fizikasi",
+                icon: "fa-circle-radiation",
+                color: "rose",
+                summary: "Proton-neytron modeli, massa defekti va Eynshteynning energiya-massa munosabati.",
+                content: `
+                    <div class="p-3 bg-rose-500/10 border-l-4 border-rose-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-rose-600 dark:text-rose-400 mb-1">Yadroning nuklon modeli</h4>
+                        <p>Atom yadrosi musbat zaryadli protonlar va neytralligi bilan ajralib turuvchi neytronlardan tashkil topgan. Ularning umumiy nomi <b>nuklonlar</b> deb ataladi. Yadroning tartib raqami Z protonlar sonini, massa soni A esa umumiy nuklonlar sonini bildiradi.</p>
+                    </div>
+                    <div class="p-3 bg-pink-500/10 border-l-4 border-pink-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-pink-600 dark:text-pink-400 mb-1">Massa defekti</h4>
+                        <p>Yadro massasi uni tashkil etuvchi barcha erkin nuklonlarning alohida olingan massalari yig'indisidan doimo kichik bo'ladi. Bu farq <b>massa defekti</b> deb ataladi: <b>Δm = Z·mₚ + (A - Z)·mₙ - M_yadro</b>.</p>
+                    </div>
+                    <div class="p-3 bg-red-500/10 border-l-4 border-red-500 rounded-r-xl">
+                        <h4 class="font-bold text-red-600 dark:text-red-400 mb-1">Bog'lanish energiyasi</h4>
+                        <p>Massa defekti natijasida ajralib chiqqan energiya yadro bog'lanish energiyasidir: <b>E_bog' = Δm · c²</b>.</p>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                title: "6. Radioaktivlik va Yadro reaksiyalari",
+                tag: "Yadro fizikasi",
+                icon: "fa-biohazard",
+                color: "emerald",
+                summary: "Alfa, beta, gamma yemirilish turlari va radioaktiv yemirilish qonuniyati.",
+                content: `
+                    <div class="p-3 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-emerald-600 dark:text-emerald-400 mb-1">Radioaktivlik hodisasi</h4>
+                        <p>Ba'zi atom yadrolarining beqaror bo'lib, o'z-o'zidan nurlanishlar chiqarib boshqa element yadrolariga aylanishi radioaktivlik deyiladi. Bunga A. Bekkerel va Mariya Kyuri katta hiss qo'shgan.</p>
+                    </div>
+                    <div class="p-3 bg-teal-500/10 border-l-4 border-teal-500 rounded-r-xl mb-3">
+                        <h4 class="font-bold text-teal-600 dark:text-teal-400 mb-1">Nurlanish turlari</h4>
+                        <p><b>α-yemirilish</b> geliy yadrosini chiqarish bilan borib, massa 4 taga, zaryad 2 taga kamayadi. <b>β⁻-yemirilish</b> tez elektronlar oqimi bo'lib, tartib raqami 1 taga ortadi. <b>γ-nurlanish</b> esa yuqori chastotali elektromagnit fotonlar oqimidir.</p>
+                    </div>
+                    <div class="p-3 bg-cyan-500/10 border-l-4 border-cyan-500 rounded-r-xl">
+                        <h4 class="font-bold text-cyan-600 dark:text-cyan-400 mb-1">Yemirilish qonuni</h4>
+                        <p>Vaqt o'tishi bilan radioaktiv yadrolar sonining kamayishi exponential qonuniyatga bo'ysunadi: <b>N(t) = N₀ · 2^(-t/T)</b>.</p>
+                    </div>
+                `
+            }
         ];
 
         function renderTheoryList(filterText = "") {
@@ -872,7 +998,7 @@
             }, 200);
         }
 
-        /* --- 5 TA KROSSVORD BAZASI (Javobsiz va to'liq interaktiv) --- */
+        /* 5 TA KROSSVORD BAZASI */
         const crosswordSets = [
             {
                 title: "1-Mavzu: Atom tuzilishi va modellar",
@@ -982,7 +1108,6 @@
         ];
 
         let activeCwIndex = 0;
-
         function selectCrossword(idx) {
             activeCwIndex = idx;
             for (let i = 0; i < 5; i++) {
@@ -994,7 +1119,6 @@
         function renderActiveCrossword() {
             const set = crosswordSets[activeCwIndex];
             document.getElementById("cw-current-title").innerText = set.title + " savollari:";
-            
             const qList = document.getElementById("cw-questions-list");
             qList.innerHTML = "";
             set.hints.forEach(h => {
