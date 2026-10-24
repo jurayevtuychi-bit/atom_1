@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="uz" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Atom Fizikasi - Mobil Ilova | tabiiy-fanlar.uz</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <!-- FontAwesome Ikonkalari -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -18,27 +23,51 @@
             user-select: none;
         }
         body {
-            background-color: #0b0f19;
-            color: #f8fafc;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        .app-bg {
+        /* Kunduzgi va Tungi fonlar */
+        .app-bg-dark {
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0f172a 50%, #090d16 100%);
+            color: #f8fafc;
             min-height: 100vh;
             padding-bottom: 85px;
         }
-        .glass-card {
+        .app-bg-light {
+            background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f8fafc 50%, #f1f5f9 100%);
+            color: #1e293b;
+            min-height: 100vh;
+            padding-bottom: 85px;
+        }
+
+        /* Glassmorphism kartochkalar rejimlarga moslashuvi */
+        .dark .glass-card {
             background: rgba(30, 41, 59, 0.65);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .glass-nav {
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .glass-nav {
             background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-top: 1px solid rgba(56, 189, 248, 0.2);
         }
+        .light .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
         .atom-spinner {
             position: relative;
             width: 110px;
@@ -102,32 +131,35 @@
         }
         .cw-cell:focus {
             outline: 2px solid #38bdf8;
-            background-color: #1e293b;
             transform: scale(1.08);
             z-index: 20;
         }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
     </style>
 </head>
-<body class="app-bg">
+<body id="body-container" class="app-bg-dark">
 
     <!-- YUQORI HEADER (App Bar) -->
-    <header class="sticky top-0 z-40 glass-card px-4 py-3 flex items-center justify-between border-b border-slate-800 shadow-lg">
+    <header class="sticky top-0 z-40 glass-card px-4 py-3 flex items-center justify-between border-b shadow-lg transition-colors">
         <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-md shadow-cyan-500/20">
-                <i class="fa-solid fa-atom text-white text-xl fa-spin" style="--fa-animation-duration: 8s;"></i>
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-md shadow-cyan-500/20 text-white">
+                <i class="fa-solid fa-atom text-xl fa-spin" style="--fa-animation-duration: 8s;"></i>
             </div>
             <div>
-                <h1 class="font-bold text-base tracking-wide text-white leading-tight">ATOM FIZIKASI</h1>
-                <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-[11px] text-cyan-400 flex items-center hover:underline">
+                <h1 class="font-bold text-base tracking-wide leading-tight">ATOM FIZIKASI</h1>
+                <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-[11px] text-cyan-500 dark:text-cyan-400 flex items-center hover:underline">
                     <i class="fa-solid fa-globe mr-1 text-[9px]"></i> tabiiy-fanlar.uz
                 </a>
             </div>
         </div>
         <div class="flex items-center space-x-2">
-            <button onclick="openInfoModal()" class="w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white">
+            <!-- Tungi/Kunduzgi rejim tugmasi -->
+            <button onclick="toggleTheme()" id="theme-toggle-btn" class="w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-yellow-400 hover:scale-105 transition shadow-sm">
+                <i id="theme-icon" class="fa-solid fa-sun"></i>
+            </button>
+            <button onclick="openInfoModal()" class="w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:scale-105 transition shadow-sm">
                 <i class="fa-solid fa-circle-info"></i>
             </button>
         </div>
@@ -139,15 +171,15 @@
         <!-- ==================== 1. BOSH SAHIFA (HOME) ==================== -->
         <section id="tab-home" class="tab-content space-y-5">
             <!-- Hero Banner -->
-            <div class="glass-card rounded-2xl p-5 relative overflow-hidden border border-cyan-500/30 shadow-xl">
+            <div class="glass-card rounded-2xl p-5 relative overflow-hidden border shadow-xl">
                 <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl"></div>
                 <div class="flex items-center justify-between">
                     <div class="w-3/5 space-y-2">
-                        <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                        <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30">
                             Interaktiv mobil qo'llanma
                         </span>
-                        <h2 class="text-xl font-extrabold text-white leading-snug">Kvant va Atom olamiga sayohat!</h2>
-                        <p class="text-xs text-slate-300 leading-relaxed">
+                        <h2 class="text-xl font-extrabold leading-snug">Kvant va Atom olamiga sayohat!</h2>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                             Nazariya, masalalar, virtual laboratoriyalar va intellektual o'yinlar jamlanmasi.
                         </p>
                     </div>
@@ -163,57 +195,57 @@
             <!-- Tezkor statistika -->
             <div class="grid grid-cols-4 gap-2 text-center">
                 <div class="glass-card p-2.5 rounded-xl">
-                    <div class="text-cyan-400 font-bold text-base">6 ta</div>
-                    <div class="text-[10px] text-slate-400">Mavzular</div>
+                    <div class="text-cyan-600 dark:text-cyan-400 font-bold text-base">6 ta</div>
+                    <div class="text-[10px] text-slate-500 dark:text-slate-400">Mavzular</div>
                 </div>
                 <div class="glass-card p-2.5 rounded-xl">
-                    <div class="text-purple-400 font-bold text-base">3 ta</div>
-                    <div class="text-[10px] text-slate-400">Virtual Lab</div>
+                    <div class="text-purple-600 dark:text-purple-400 font-bold text-base">3 ta</div>
+                    <div class="text-[10px] text-slate-500 dark:text-slate-400">Virtual Lab</div>
                 </div>
                 <div class="glass-card p-2.5 rounded-xl">
-                    <div class="text-amber-400 font-bold text-base">15+</div>
-                    <div class="text-[10px] text-slate-400">Masalalar</div>
+                    <div class="text-amber-600 dark:text-amber-400 font-bold text-base">15+</div>
+                    <div class="text-[10px] text-slate-500 dark:text-slate-400">Masalalar</div>
                 </div>
                 <div class="glass-card p-2.5 rounded-xl">
-                    <div class="text-emerald-400 font-bold text-base">7 ta</div>
-                    <div class="text-[10px] text-slate-400">Krossvord</div>
+                    <div class="text-emerald-600 dark:text-emerald-400 font-bold text-base">7 ta</div>
+                    <div class="text-[10px] text-slate-500 dark:text-slate-400">Krossvord</div>
                 </div>
             </div>
 
             <!-- Bo'limlar menyusi (Katalog) -->
             <div>
-                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">Ilova bo'limlari</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1">Ilova bo'limlari</h3>
                 <div class="grid grid-cols-2 gap-3">
                     <div onclick="switchTab('theory')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-cyan-500/50 transition-all active:scale-95 group">
-                        <div class="w-11 h-11 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-11 h-11 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-xl mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-book-open-reader"></i>
                         </div>
-                        <h4 class="font-bold text-sm text-white">Nazariy qism</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Ma'ruzalar, postulatlar va modellar</p>
+                        <h4 class="font-bold text-sm">Nazariy qism</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Ma'ruzalar, postulatlar va modellar</p>
                     </div>
 
                     <div onclick="switchTab('practice')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-purple-500/50 transition-all active:scale-95 group">
-                        <div class="w-11 h-11 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-11 h-11 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 text-xl mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-calculator"></i>
                         </div>
-                        <h4 class="font-bold text-sm text-white">Amaliyot va Test</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Masalalar, kalkulyator va testlar</p>
+                        <h4 class="font-bold text-sm">Amaliyot va Test</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Masalalar, kalkulyator va testlar</p>
                     </div>
 
                     <div onclick="switchTab('lab')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-emerald-500/50 transition-all active:scale-95 group">
-                        <div class="w-11 h-11 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xl mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-flask-vial"></i>
                         </div>
-                        <h4 class="font-bold text-sm text-white">Virtual Lab</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Rezerford, Bor va Radioaktivlik</p>
+                        <h4 class="font-bold text-sm">Virtual Lab</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Rezerford, Bor va Radioaktivlik</p>
                     </div>
 
                     <div onclick="switchTab('crossword')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-amber-500/50 transition-all active:scale-95 group">
-                        <div class="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 text-xl mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-puzzle-piece"></i>
                         </div>
-                        <h4 class="font-bold text-sm text-white">Krossvord</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Intellektual fizik boshqotirma</p>
+                        <h4 class="font-bold text-sm">Krossvord</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Intellektual fizik boshqotirma</p>
                     </div>
                 </div>
             </div>
@@ -221,12 +253,12 @@
             <!-- Manba havolasi (tabiiy-fanlar.uz) -->
             <div class="glass-card rounded-2xl p-4 border border-blue-500/20 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-400">
+                    <div class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
                         <i class="fa-solid fa-graduation-cap text-lg"></i>
                     </div>
                     <div>
-                        <h4 class="text-xs font-bold text-white">Tabiiy Fanlar Portali</h4>
-                        <p class="text-[11px] text-slate-400">Qo'shimcha o'quv materiallar manbasi</p>
+                        <h4 class="text-xs font-bold">Tabiiy Fanlar Portali</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Qo'shimcha o'quv materiallar manbasi</p>
                     </div>
                 </div>
                 <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition">
@@ -238,14 +270,14 @@
         <!-- ==================== 2. NAZARIY MA'LUMOTLAR ==================== -->
         <section id="tab-theory" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
-                <h2 class="text-lg font-bold text-white"><i class="fa-solid fa-book-open text-cyan-400 mr-2"></i>Nazariy Ma'lumotlar</h2>
-                <span class="text-xs text-slate-400">6 ta modul</span>
+                <h2 class="text-lg font-bold"><i class="fa-solid fa-book-open text-cyan-600 dark:text-cyan-400 mr-2"></i>Nazariy Ma'lumotlar</h2>
+                <span class="text-xs text-slate-500 dark:text-slate-400">6 ta modul</span>
             </div>
 
             <div class="relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
                 <input type="text" id="theory-search" oninput="filterTheory()" placeholder="Mavzu yoki kalit so'zni qidiring..." 
-                    class="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-500">
+                    class="w-full pl-10 pr-4 py-2.5 bg-white/70 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-cyan-500">
             </div>
 
             <div id="theory-list" class="space-y-3"></div>
@@ -253,68 +285,68 @@
 
         <!-- ==================== 3. AMALIYOT VA MASALALAR ==================== -->
         <section id="tab-practice" class="tab-content hidden space-y-4">
-            <h2 class="text-lg font-bold text-white"><i class="fa-solid fa-square-root-variable text-purple-400 mr-2"></i>Amaliyot va Test</h2>
+            <h2 class="text-lg font-bold"><i class="fa-solid fa-square-root-variable text-purple-600 dark:text-purple-400 mr-2"></i>Amaliyot va Test</h2>
 
-            <div class="grid grid-cols-3 gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs font-semibold">
+            <div class="grid grid-cols-3 gap-1.5 bg-slate-200 dark:bg-slate-900 p-1 rounded-xl border border-slate-300 dark:border-slate-800 text-xs font-semibold">
                 <button onclick="switchPracticeSub('problems')" id="psub-problems" class="py-2 rounded-lg bg-purple-600 text-white transition">Masalalar</button>
-                <button onclick="switchPracticeSub('calc')" id="psub-calc" class="py-2 rounded-lg text-slate-400 hover:text-white transition">Kalkulyator</button>
-                <button onclick="switchPracticeSub('quiz')" id="psub-quiz" class="py-2 rounded-lg text-slate-400 hover:text-white transition">Test (Quiz)</button>
+                <button onclick="switchPracticeSub('calc')" id="psub-calc" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">Kalkulyator</button>
+                <button onclick="switchPracticeSub('quiz')" id="psub-quiz" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">Test (Quiz)</button>
             </div>
 
             <!-- 3.1. Masalalar va yechimlar -->
             <div id="practice-problems" class="space-y-3">
                 <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-purple-500">
                     <div class="flex justify-between items-center">
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">1-Masala | Bor postulatlari</span>
-                        <span class="text-[11px] text-slate-400">Oson</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-500/20 text-purple-700 dark:text-purple-300">1-Masala | Bor postulatlari</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">Oson</span>
                     </div>
-                    <p class="text-xs text-slate-200 leading-relaxed">
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
                         Vodorod atomida elektron 3-energetik pog'onadan (E₃ = -1.51 eV) 2-energetik pog'onaga (E₂ = -3.4 eV) o'tganda nurlanadigan fotonning energiyasini (eV da) toping.
                     </p>
-                    <button onclick="toggleSolution('sol-1')" class="text-xs text-cyan-400 font-semibold flex items-center mt-2">
+                    <button onclick="toggleSolution('sol-1')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2">
                         <i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish
                     </button>
-                    <div id="sol-1" class="hidden mt-2 pt-2 border-t border-slate-700/80 text-xs text-slate-300 space-y-1 bg-slate-900/60 p-3 rounded-xl">
+                    <div id="sol-1" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
                         <p><b>Berilgan:</b> E₃ = -1.51 eV, E₂ = -3.4 eV</p>
                         <p><b>Formula:</b> hν = E₃ - E₂</p>
                         <p><b>Hisoblash:</b> hν = -1.51 - (-3.4) = 1.89 eV</p>
-                        <p class="text-emerald-400 font-bold">Javob: 1.89 eV (qizil spektr chizig'i, Hα)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 1.89 eV (qizil spektr chizig'i, Hα)</p>
                     </div>
                 </div>
 
                 <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-cyan-500">
                     <div class="flex justify-between items-center">
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">2-Masala | De-Broyl gipotezasi</span>
-                        <span class="text-[11px] text-slate-400">O'rtacha</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-700 dark:text-cyan-300">2-Masala | De-Broyl gipotezasi</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">O'rtacha</span>
                     </div>
-                    <p class="text-xs text-slate-200 leading-relaxed">
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
                         Tezligi v = 2 × 10⁶ m/s bo'lgan elektronning de-Broyl to'lqin uzunligini toping. (h = 6.63 × 10⁻³⁴ J·s, mₑ = 9.1 × 10⁻³¹ kg)
                     </p>
-                    <button onclick="toggleSolution('sol-2')" class="text-xs text-cyan-400 font-semibold flex items-center mt-2">
+                    <button onclick="toggleSolution('sol-2')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2">
                         <i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish
                     </button>
-                    <div id="sol-2" class="hidden mt-2 pt-2 border-t border-slate-700/80 text-xs text-slate-300 space-y-1 bg-slate-900/60 p-3 rounded-xl">
+                    <div id="sol-2" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
                         <p><b>Formula:</b> λ = h / (mₑ · v)</p>
                         <p><b>Hisoblash:</b> λ = 6.63×10⁻³⁴ / (9.1×10⁻³¹ × 2×10⁶) ≈ 3.64 × 10⁻¹⁰ m</p>
-                        <p class="text-emerald-400 font-bold">Javob: 0.364 nm (yoki 3.64 Å)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 0.364 nm (yoki 3.64 Å)</p>
                     </div>
                 </div>
 
                 <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-emerald-500">
                     <div class="flex justify-between items-center">
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">3-Masala | Radioaktiv yemirilish</span>
-                        <span class="text-[11px] text-slate-400">Murakkab</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">3-Masala | Radioaktiv yemirilish</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">Murakkab</span>
                     </div>
-                    <p class="text-xs text-slate-200 leading-relaxed">
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
                         Radioaktiv izotopning yarim yemirilish davri T = 10 kun. Boshlang'ich atomlar soni N₀ = 8000 ta bo'lsa, t = 30 kundan keyin qancha atom yemirilmay qoladi?
                     </p>
-                    <button onclick="toggleSolution('sol-3')" class="text-xs text-cyan-400 font-semibold flex items-center mt-2">
+                    <button onclick="toggleSolution('sol-3')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2">
                         <i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish
                     </button>
-                    <div id="sol-3" class="hidden mt-2 pt-2 border-t border-slate-700/80 text-xs text-slate-300 space-y-1 bg-slate-900/60 p-3 rounded-xl">
+                    <div id="sol-3" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
                         <p><b>Formula:</b> N = N₀ · 2^(-t/T)</p>
                         <p><b>Hisoblash:</b> N = 8000 · 2^(-30/10) = 8000 / 8 = 1000 ta</p>
-                        <p class="text-emerald-400 font-bold">Javob: 1000 ta atom qoladi (7000 tasi yemiriladi).</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 1000 ta atom qoladi (7000 tasi yemiriladi).</p>
                     </div>
                 </div>
             </div>
@@ -322,28 +354,28 @@
             <!-- 3.2. Interaktiv Fizik Kalkulyator -->
             <div id="practice-calc" class="hidden space-y-4">
                 <div class="glass-card p-4 rounded-2xl space-y-3">
-                    <h3 class="text-sm font-bold text-cyan-400"><i class="fa-solid fa-bolt mr-1.5"></i>Foton energiyasi va chastotasi</h3>
-                    <p class="text-[11px] text-slate-400">To'lqin uzunligi (λ) orqali foton energiyasini (E) hisoblash:</p>
+                    <h3 class="text-sm font-bold text-cyan-600 dark:text-cyan-400"><i class="fa-solid fa-bolt mr-1.5"></i>Foton energiyasi va chastotasi</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">To'lqin uzunligi (λ) orqali foton energiyasini (E) hisoblash:</p>
                     <div>
-                        <label class="text-xs text-slate-300 block mb-1">To'lqin uzunligi λ (nanometr, nm da):</label>
-                        <input type="number" id="calc-lambda" value="500" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+                        <label class="text-xs text-slate-700 dark:text-slate-300 block mb-1">To'lqin uzunligi λ (nanometr, nm da):</label>
+                        <input type="number" id="calc-lambda" value="500" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white text-sm">
                     </div>
                     <button onclick="calculatePhoton()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs shadow-lg">
                         Hisoblash
                     </button>
-                    <div id="calc-photon-res" class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                        <div>Chastota (ν): <span class="text-cyan-400 font-bold">6.00 × 10¹⁴ Hz</span></div>
-                        <div>Energiya (Joul): <span class="text-purple-400 font-bold">3.98 × 10⁻¹⁹ J</span></div>
-                        <div>Energiya (eV): <span class="text-emerald-400 font-bold">2.48 eV</span></div>
+                    <div id="calc-photon-res" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-xs space-y-1">
+                        <div>Chastota (ν): <span class="text-cyan-600 dark:text-cyan-400 font-bold">6.00 × 10¹⁴ Hz</span></div>
+                        <div>Energiya (Joul): <span class="text-purple-600 dark:text-purple-400 font-bold">3.98 × 10⁻¹⁹ J</span></div>
+                        <div>Energiya (eV): <span class="text-emerald-600 dark:text-emerald-400 font-bold">2.48 eV</span></div>
                     </div>
                 </div>
 
                 <div class="glass-card p-4 rounded-2xl space-y-3">
-                    <h3 class="text-sm font-bold text-purple-400"><i class="fa-solid fa-arrows-up-down mr-1.5"></i>Vodorod atomi energetik o'tishlari</h3>
+                    <h3 class="text-sm font-bold text-purple-600 dark:text-purple-400"><i class="fa-solid fa-arrows-up-down mr-1.5"></i>Vodorod atomi energetik o'tishlari</h3>
                     <div class="grid grid-cols-2 gap-2">
                         <div>
-                            <label class="text-[11px] text-slate-300 block mb-1">Boshlang'ich (nᵢ):</label>
-                            <select id="calc-ni" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs">
+                            <label class="text-[11px] text-slate-700 dark:text-slate-300 block mb-1">Boshlang'ich (nᵢ):</label>
+                            <select id="calc-ni" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white text-xs">
                                 <option value="2">n = 2</option>
                                 <option value="3" selected>n = 3</option>
                                 <option value="4">n = 4</option>
@@ -352,8 +384,8 @@
                             </select>
                         </div>
                         <div>
-                            <label class="text-[11px] text-slate-300 block mb-1">Oxirgi pog'ona (n_f):</label>
-                            <select id="calc-nf" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs">
+                            <label class="text-[11px] text-slate-700 dark:text-slate-300 block mb-1">Oxirgi pog'ona (n_f):</label>
+                            <select id="calc-nf" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white text-xs">
                                 <option value="1">n = 1 (Layman)</option>
                                 <option value="2" selected>n = 2 (Balmer)</option>
                                 <option value="3">n = 3 (Pashen)</option>
@@ -363,10 +395,10 @@
                     <button onclick="calculateRydberg()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold text-xs shadow-lg">
                         Spektrni hisoblash
                     </button>
-                    <div id="calc-rydberg-res" class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                        <div>Jarayon: <span class="text-amber-400 font-bold">Nurlanish (Emissiya)</span></div>
-                        <div>Foton energiyasi (ΔE): <span class="text-emerald-400 font-bold">1.89 eV</span></div>
-                        <div>To'lqin uzunligi (λ): <span class="text-cyan-400 font-bold">656.3 nm (Qizil)</span></div>
+                    <div id="calc-rydberg-res" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-xs space-y-1">
+                        <div>Jarayon: <span class="text-amber-600 dark:text-amber-400 font-bold">Nurlanish (Emissiya)</span></div>
+                        <div>Foton energiyasi (ΔE): <span class="text-emerald-600 dark:text-emerald-400 font-bold">1.89 eV</span></div>
+                        <div>To'lqin uzunligi (λ): <span class="text-cyan-600 dark:text-cyan-400 font-bold">656.3 nm (Qizil)</span></div>
                     </div>
                 </div>
             </div>
@@ -374,11 +406,11 @@
             <!-- 3.3. Interaktiv Test -->
             <div id="practice-quiz" class="hidden space-y-4">
                 <div class="glass-card p-5 rounded-2xl space-y-4">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                        <span id="quiz-progress" class="text-xs font-bold text-purple-400">Savol: 1 / 5</span>
-                        <span id="quiz-score" class="text-xs bg-slate-800 px-2.5 py-1 rounded-full text-emerald-400 font-bold">Ball: 0</span>
+                    <div class="flex justify-between items-center border-b border-slate-300 dark:border-slate-800 pb-2">
+                        <span id="quiz-progress" class="text-xs font-bold text-purple-600 dark:text-purple-400">Savol: 1 / 5</span>
+                        <span id="quiz-score" class="text-xs bg-slate-200 dark:bg-slate-800 px-2.5 py-1 rounded-full text-emerald-600 dark:text-emerald-400 font-bold">Ball: 0</span>
                     </div>
-                    <h3 id="quiz-question" class="text-sm font-bold text-white leading-relaxed">Savol yuklanmoqda...</h3>
+                    <h3 id="quiz-question" class="text-sm font-bold leading-relaxed">Savol yuklanmoqda...</h3>
                     <div id="quiz-options" class="space-y-2.5"></div>
                     <div id="quiz-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
                     <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden w-full py-2.5 rounded-xl bg-cyan-600 text-white font-bold text-xs">
@@ -391,30 +423,30 @@
         <!-- ==================== 4. VIRTUAL LABORATORIYA ==================== -->
         <section id="tab-lab" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
-                <h2 class="text-lg font-bold text-white"><i class="fa-solid fa-microscope text-emerald-400 mr-2"></i>Virtual Laboratoriya</h2>
+                <h2 class="text-lg font-bold"><i class="fa-solid fa-microscope text-emerald-600 dark:text-emerald-400 mr-2"></i>Virtual Laboratoriya</h2>
             </div>
 
-            <div class="grid grid-cols-3 gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-800 text-[11px] font-semibold">
+            <div class="grid grid-cols-3 gap-1.5 bg-slate-200 dark:bg-slate-900 p-1 rounded-xl border border-slate-300 dark:border-slate-800 text-[11px] font-semibold">
                 <button onclick="switchLab(1)" id="lab-btn-1" class="py-2 rounded-lg bg-emerald-600 text-white transition">1. Rezerford</button>
-                <button onclick="switchLab(2)" id="lab-btn-2" class="py-2 rounded-lg text-slate-400 hover:text-white transition">2. Bor Atomi</button>
-                <button onclick="switchLab(3)" id="lab-btn-3" class="py-2 rounded-lg text-slate-400 hover:text-white transition">3. Yemirilish</button>
+                <button onclick="switchLab(2)" id="lab-btn-2" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">2. Bor Atomi</button>
+                <button onclick="switchLab(3)" id="lab-btn-3" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">3. Yemirilish</button>
             </div>
 
             <!-- LAB 1: REZERFORD TAJRIBASI -->
             <div id="lab-panel-1" class="glass-card p-4 rounded-2xl space-y-3">
                 <div class="flex justify-between items-start">
                     <div>
-                        <h3 class="text-sm font-bold text-emerald-400">Rezerford α-zarralar sochilishi</h3>
-                        <p class="text-[11px] text-slate-400">Alfa-zarralarning oltin yadrosi kulon maydonida og'ishi</p>
+                        <h3 class="text-sm font-bold text-emerald-600 dark:text-emerald-400">Rezerford α-zarralar sochilishi</h3>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Alfa-zarralarning oltin yadrosi kulon maydonida og'ishi</p>
                     </div>
-                    <button onclick="resetRutherford()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-xs rounded-lg text-slate-300">
+                    <button onclick="resetRutherford()" class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-xs rounded-lg text-slate-700 dark:text-slate-300">
                         <i class="fa-solid fa-rotate-right mr-1"></i>Tozalash
                     </button>
                 </div>
 
-                <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950">
+                <div class="relative rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-950">
                     <canvas id="rutherfordCanvas" width="360" height="240" class="w-full h-auto block"></canvas>
-                    <div class="absolute top-2 left-2 bg-slate-900/80 px-2 py-1 rounded text-[10px] text-slate-300 border border-slate-800">
+                    <div class="absolute top-2 left-2 bg-slate-900/80 px-2 py-1 rounded text-[10px] text-slate-200 border border-slate-800">
                         Zarralar: <span id="alpha-count" class="text-emerald-400 font-bold">0</span> | Og'gan: <span id="alpha-deflected" class="text-amber-400 font-bold">0</span>
                     </div>
                 </div>
@@ -422,15 +454,15 @@
                 <div class="space-y-2.5 pt-1 text-xs">
                     <div>
                         <div class="flex justify-between mb-1">
-                            <span class="text-slate-300">Yadro zaryadi (Z):</span>
-                            <span id="ruth-z-val" class="text-amber-400 font-bold">79 (Oltin - Au)</span>
+                            <span class="text-slate-600 dark:text-slate-300">Yadro zaryadi (Z):</span>
+                            <span id="ruth-z-val" class="text-amber-600 dark:text-amber-400 font-bold">79 (Oltin - Au)</span>
                         </div>
                         <input type="range" id="ruth-z" min="20" max="100" value="79" oninput="updateRuthParams()" class="w-full accent-emerald-500">
                     </div>
                     <div>
                         <div class="flex justify-between mb-1">
-                            <span class="text-slate-300">α-zarra energiyasi (Eα):</span>
-                            <span id="ruth-e-val" class="text-cyan-400 font-bold">5 MeV</span>
+                            <span class="text-slate-600 dark:text-slate-300">α-zarra energiyasi (Eα):</span>
+                            <span id="ruth-e-val" class="text-cyan-600 dark:text-cyan-400 font-bold">5 MeV</span>
                         </div>
                         <input type="range" id="ruth-e" min="2" max="10" value="5" oninput="updateRuthParams()" class="w-full accent-cyan-500">
                     </div>
@@ -438,7 +470,7 @@
                         <button onclick="fireAlphaWave()" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-xl font-bold text-white shadow">
                             <i class="fa-solid fa-play mr-1"></i> Dasta yuborish
                         </button>
-                        <button onclick="toggleAutoAlpha()" id="auto-alpha-btn" class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-xl font-semibold text-cyan-400">
+                        <button onclick="toggleAutoAlpha()" id="auto-alpha-btn" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl font-semibold text-cyan-600 dark:text-cyan-400">
                             Avto: O'chiq
                         </button>
                     </div>
@@ -448,11 +480,11 @@
             <!-- LAB 2: BOR ATOMI VA KVANT O'TISHLAR -->
             <div id="lab-panel-2" class="hidden glass-card p-4 rounded-2xl space-y-3">
                 <div>
-                    <h3 class="text-sm font-bold text-cyan-400">Borning Vodorod Atomi Modeli</h3>
-                    <p class="text-[11px] text-slate-400">Elektronning statsionar orbitalar orasida kvant o'tishi</p>
+                    <h3 class="text-sm font-bold text-cyan-600 dark:text-cyan-400">Borning Vodorod Atomi Modeli</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Elektronning statsionar orbitalar orasida kvant o'tishi</p>
                 </div>
 
-                <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950">
+                <div class="relative rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-950">
                     <canvas id="bohrCanvas" width="360" height="250" class="w-full h-auto block"></canvas>
                     <div id="bohr-photon-alert" class="absolute bottom-2 left-2 right-2 bg-slate-900/90 border border-cyan-500/40 px-3 py-1.5 rounded-lg text-[11px] text-center text-cyan-300">
                         Orbital tugmasini bosib elektronni boshqa pog'onaga o'tkazing!
@@ -460,18 +492,18 @@
                 </div>
 
                 <div class="space-y-2">
-                    <div class="text-xs text-slate-300 font-medium">Kvant pog'onasini tanlang (n):</div>
+                    <div class="text-xs text-slate-600 dark:text-slate-300 font-medium">Kvant pog'onasini tanlang (n):</div>
                     <div class="grid grid-cols-4 gap-2">
                         <button onclick="setBohrOrbit(1)" id="bohr-n1" class="py-2 rounded-xl bg-cyan-600 text-white font-bold text-xs border border-cyan-400">
                             n = 1<br><span class="text-[9px] font-normal">-13.6 eV</span>
                         </button>
-                        <button onclick="setBohrOrbit(2)" id="bohr-n2" class="py-2 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs border border-slate-700">
+                        <button onclick="setBohrOrbit(2)" id="bohr-n2" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700">
                             n = 2<br><span class="text-[9px] font-normal">-3.40 eV</span>
                         </button>
-                        <button onclick="setBohrOrbit(3)" id="bohr-n3" class="py-2 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs border border-slate-700">
+                        <button onclick="setBohrOrbit(3)" id="bohr-n3" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700">
                             n = 3<br><span class="text-[9px] font-normal">-1.51 eV</span>
                         </button>
-                        <button onclick="setBohrOrbit(4)" id="bohr-n4" class="py-2 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs border border-slate-700">
+                        <button onclick="setBohrOrbit(4)" id="bohr-n4" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700">
                             n = 4<br><span class="text-[9px] font-normal">-0.85 eV</span>
                         </button>
                     </div>
@@ -482,30 +514,30 @@
             <div id="lab-panel-3" class="hidden glass-card p-4 rounded-2xl space-y-3">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h3 class="text-sm font-bold text-amber-400">Radioaktiv Yemirilish Qonuni</h3>
-                        <p class="text-[11px] text-slate-400">N(t) = N₀ · 2^(-t/T) jarayonini modellashtirish</p>
+                        <h3 class="text-sm font-bold text-amber-600 dark:text-amber-400">Radioaktiv Yemirilish Qonuni</h3>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">N(t) = N₀ · 2^(-t/T) jarayonini modellashtirish</p>
                     </div>
-                    <button onclick="resetDecayLab()" class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-slate-300">
+                    <button onclick="resetDecayLab()" class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 text-xs rounded-lg text-slate-700 dark:text-slate-300">
                         <i class="fa-solid fa-rotate-right mr-1"></i>Qayta
                     </button>
                 </div>
 
-                <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-2">
+                <div class="relative rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-950 p-2">
                     <canvas id="decayCanvas" width="340" height="200" class="w-full h-auto block"></canvas>
                 </div>
 
                 <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                    <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
-                        <div class="text-[10px] text-slate-400">Vaqt (t)</div>
-                        <div id="decay-time" class="font-bold text-white">0.0 s</div>
+                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl border border-slate-300 dark:border-slate-800">
+                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Vaqt (t)</div>
+                        <div id="decay-time" class="font-bold">0.0 s</div>
                     </div>
-                    <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
-                        <div class="text-[10px] text-slate-400">Aktiv yadro (N)</div>
-                        <div id="decay-active" class="font-bold text-amber-400">100%</div>
+                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl border border-slate-300 dark:border-slate-800">
+                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Aktiv yadro (N)</div>
+                        <div id="decay-active" class="font-bold text-amber-600 dark:text-amber-400">100%</div>
                     </div>
-                    <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
-                        <div class="text-[10px] text-slate-400">Yemirilgan</div>
-                        <div id="decay-decayed" class="font-bold text-emerald-400">0%</div>
+                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl border border-slate-300 dark:border-slate-800">
+                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Yemirilgan</div>
+                        <div id="decay-decayed" class="font-bold text-emerald-600 dark:text-emerald-400">0%</div>
                     </div>
                 </div>
 
@@ -519,8 +551,8 @@
         <section id="tab-crossword" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="text-lg font-bold text-white"><i class="fa-solid fa-border-all text-amber-400 mr-2"></i>Fizik Krossvord</h2>
-                    <p class="text-[11px] text-slate-400">Atom va yadro fizikasi atamalarini toping</p>
+                    <h2 class="text-lg font-bold"><i class="fa-solid fa-border-all text-amber-600 dark:text-amber-400 mr-2"></i>Fizik Krossvord</h2>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Atom va yadro fizikasi atamalarini toping</p>
                 </div>
                 <button onclick="checkCrossword()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow">
                     <i class="fa-solid fa-check-double mr-1"></i>Tekshirish
@@ -535,32 +567,32 @@
 
             <div class="glass-card p-4 rounded-2xl space-y-2.5">
                 <div class="flex justify-between items-center">
-                    <h3 class="text-xs font-bold uppercase text-amber-400">Krossvord savollari:</h3>
-                    <button onclick="fillCrosswordHints()" class="text-[11px] text-cyan-400 hover:underline">
+                    <h3 class="text-xs font-bold uppercase text-amber-600 dark:text-amber-400">Krossvord savollari:</h3>
+                    <button onclick="fillCrosswordHints()" class="text-[11px] text-cyan-600 dark:text-cyan-400 hover:underline">
                         <i class="fa-solid fa-lightbulb mr-1"></i>Yordam (Javoblar)
                     </button>
                 </div>
-                <div class="space-y-2 text-xs text-slate-300 max-h-60 overflow-y-auto pr-1">
-                    <div class="p-2 rounded-lg bg-slate-900/70 border border-slate-800">
-                        <b class="text-cyan-400">1. (Gorizontal):</b> Atomning musbat zaryadlangan markaziy qismi (5 harf).
+                <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 max-h-60 overflow-y-auto pr-1">
+                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-300 dark:border-slate-800">
+                        <b class="text-cyan-600 dark:text-cyan-400">1. (Gorizontal):</b> Atomning musbat zaryadlangan markaziy qismi (5 harf).
                     </div>
-                    <div class="p-2 rounded-lg bg-slate-900/70 border border-slate-800">
-                        <b class="text-cyan-400">2. (Gorizontal):</b> Yadrodagi musbat zaryadli zarra (6 harf).
+                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-300 dark:border-slate-800">
+                        <b class="text-cyan-600 dark:text-cyan-400">2. (Gorizontal):</b> Yadrodagi musbat zaryadli zarra (6 harf).
                     </div>
-                    <div class="p-2 rounded-lg bg-slate-900/70 border border-slate-800">
-                        <b class="text-cyan-400">3. (Gorizontal):</b> Elektromagnit nurlanish kvanti, yorug'lik zarrasi (5 harf).
+                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
+                        <b class="text-cyan-600 dark:text-cyan-400">3. (Gorizontal):</b> Elektromagnit nurlanish kvanti, yorug'lik zarrasi (5 harf).
                     </div>
-                    <div class="p-2 rounded-lg bg-slate-900/70 border border-slate-800">
-                        <b class="text-cyan-400">4. (Gorizontal):</b> Elektr zaryadiga ega bo'lmagan yadro zarrasi (7 harf).
+                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
+                        <b class="text-cyan-600 dark:text-cyan-400">4. (Gorizontal):</b> Elektr zaryadiga ega bo'lmagan yadro zarrasi (7 harf).
                     </div>
-                    <div class="p-2 rounded-lg bg-slate-900/70 border border-slate-800">
-                        <b class="text-purple-400">5. (Gorizontal):</b> Zaryad soni bir xil, ammo massa soni turlicha bo'lgan atomlar (6 harf).
+                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
+                        <b class="text-purple-600 dark:text-purple-400">5. (Gorizontal):</b> Zaryad soni bir xil, ammo massa soni turlicha bo'lgan atomlar (6 harf).
                     </div>
-                    <div class="p-2 rounded-lg bg-slate-900/70 border border-slate-800">
-                        <b class="text-purple-400">6. (Gorizontal):</b> Kvant mexanikasida fizik kattalikning eng kichik bo'linmas porsiyasi (5 harf).
+                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
+                        <b class="text-purple-600 dark:text-purple-400">6. (Gorizontal):</b> Kvant mexanikasida fizik kattalikning eng kichik bo'linmas porsiyasi (5 harf).
                     </div>
-                    <div class="p-2 rounded-lg bg-slate-900/70 border border-slate-800">
-                        <b class="text-emerald-400">7. (Gorizontal):</b> Kvant-mexanik majburiy nurlanish asosida ishlovchi optik generator (5 harf).
+                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
+                        <b class="text-emerald-600 dark:text-emerald-400">7. (Gorizontal):</b> Kvant-mexanik majburiy nurlanish asosida ishlovchi optik generator (5 harf).
                     </div>
                 </div>
             </div>
@@ -571,18 +603,18 @@
     <!-- NAZARIYA MODAL OYNASI -->
     <div id="theory-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="glass-card w-full max-w-md rounded-t-3xl sm:rounded-2xl max-h-[85vh] flex flex-col border-t border-cyan-500/40">
-            <div class="p-4 border-b border-slate-800 flex justify-between items-center">
-                <h3 id="modal-title" class="font-bold text-base text-cyan-400">Mavzu nomi</h3>
-                <button onclick="closeTheoryModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+            <div class="p-4 border-b border-slate-300 dark:border-slate-800 flex justify-between items-center">
+                <h3 id="modal-title" class="font-bold text-base text-cyan-600 dark:text-cyan-400">Mavzu nomi</h3>
+                <button onclick="closeTheoryModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-white flex items-center justify-center">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div id="modal-body" class="p-5 overflow-y-auto text-xs text-slate-200 space-y-3 leading-relaxed"></div>
-            <div class="p-3 border-t border-slate-800 bg-slate-900/90 flex justify-between items-center rounded-b-2xl">
-                <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-[11px] text-cyan-400 hover:underline">
+            <div id="modal-body" class="p-5 overflow-y-auto text-xs text-slate-700 dark:text-slate-200 space-y-3 leading-relaxed"></div>
+            <div class="p-3 border-t border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/90 flex justify-between items-center rounded-b-2xl">
+                <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-[11px] text-cyan-600 dark:text-cyan-400 hover:underline">
                     <i class="fa-solid fa-up-right-from-square mr-1"></i>Manba: tabiiy-fanlar.uz
                 </a>
-                <button onclick="closeTheoryModal()" class="px-4 py-1.5 bg-slate-800 text-white text-xs font-semibold rounded-lg">Yopish</button>
+                <button onclick="closeTheoryModal()" class="px-4 py-1.5 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-white text-xs font-semibold rounded-lg">Yopish</button>
             </div>
         </div>
     </div>
@@ -591,19 +623,19 @@
     <div id="info-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card w-full max-w-sm rounded-2xl p-5 space-y-3 border border-cyan-500/30">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-xl">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-xl">
                     <i class="fa-solid fa-atom"></i>
                 </div>
                 <div>
-                    <h3 class="font-bold text-sm text-white">Atom Fizikasi Mobil Ilovasi</h3>
-                    <p class="text-[11px] text-slate-400">Versiya 2.0 (APK WebView Ready)</p>
+                    <h3 class="font-bold text-sm">Atom Fizikasi Mobil Ilovasi</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Versiya 2.1 (Dark/Light Mode)</p>
                 </div>
             </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                 Ushbu interaktiv elektron o'quv qo'llanma talabalar va o'quvchilar uchun Atom va Yadro fizikasi fanini zamonaviy simulyatsiyalar hamda o'yinlar orqali o'zlashtirishga mo'ljallangan.
             </p>
-            <div class="p-3 rounded-xl bg-slate-900/80 text-[11px] text-slate-400 space-y-1">
-                <div><b>Ilmiy-metodik manba:</b> <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-cyan-400 underline">www.tabiiy-fanlar.uz</a></div>
+            <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                <div><b>Ilmiy-metodik manba:</b> <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-cyan-600 dark:text-cyan-400 underline">www.tabiiy-fanlar.uz</a></div>
                 <div><b>Tuzilma:</b> Nazariya, Amaliyot, 3x Virtual Lab, Krossvord</div>
             </div>
             <button onclick="closeInfoModal()" class="w-full py-2 bg-cyan-600 text-white font-bold text-xs rounded-xl">Tushunarli</button>
@@ -613,25 +645,25 @@
     <!-- QUYI NAVIGATSIYA PANELI -->
     <nav class="fixed bottom-0 left-0 right-0 z-40 glass-nav">
         <div class="max-w-md mx-auto grid grid-cols-5 py-2 px-2">
-            <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center justify-center py-1 text-cyan-400">
+            <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center justify-center py-1 text-cyan-600 dark:text-cyan-400">
                 <i class="fa-solid fa-house text-lg mb-1"></i>
                 <span class="text-[10px] font-semibold">Asosiy</span>
             </button>
-            <button onclick="switchTab('theory')" id="nav-theory" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200">
+            <button onclick="switchTab('theory')" id="nav-theory" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
                 <i class="fa-solid fa-book-open text-lg mb-1"></i>
                 <span class="text-[10px] font-medium">Nazariya</span>
             </button>
-            <button onclick="switchTab('lab')" id="nav-lab" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200">
-                <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 border-2 border-slate-900">
+            <button onclick="switchTab('lab')" id="nav-lab" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
+                <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 border-2 border-slate-100 dark:border-slate-900">
                     <i class="fa-solid fa-flask text-base"></i>
                 </div>
                 <span class="text-[10px] font-semibold mt-0.5">Virt. Lab</span>
             </button>
-            <button onclick="switchTab('practice')" id="nav-practice" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200">
+            <button onclick="switchTab('practice')" id="nav-practice" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
                 <i class="fa-solid fa-calculator text-lg mb-1"></i>
                 <span class="text-[10px] font-medium">Amaliyot</span>
             </button>
-            <button onclick="switchTab('crossword')" id="nav-crossword" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200">
+            <button onclick="switchTab('crossword')" id="nav-crossword" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
                 <i class="fa-solid fa-puzzle-piece text-lg mb-1"></i>
                 <span class="text-[10px] font-medium">Krossvord</span>
             </button>
@@ -639,6 +671,46 @@
     </nav>
 
     <script>
+        /* --- TUNGI VA KUNDUZGI REJIM MANTIG'I --- */
+        function initTheme() {
+            const savedTheme = localStorage.getItem("app_theme") || "dark";
+            const bodyContainer = document.getElementById("body-container");
+            const themeIcon = document.getElementById("theme-icon");
+            const htmlEl = document.documentElement;
+
+            if (savedTheme === "light") {
+                htmlEl.classList.remove("dark");
+                htmlEl.classList.add("light");
+                bodyContainer.className = "app-bg-light";
+                themeIcon.className = "fa-solid fa-moon text-slate-700";
+            } else {
+                htmlEl.classList.remove("light");
+                htmlEl.classList.add("dark");
+                bodyContainer.className = "app-bg-dark";
+                themeIcon.className = "fa-solid fa-sun text-yellow-400";
+            }
+        }
+
+        function toggleTheme() {
+            const htmlEl = document.documentElement;
+            const bodyContainer = document.getElementById("body-container");
+            const themeIcon = document.getElementById("theme-icon");
+
+            if (htmlEl.classList.contains("dark")) {
+                htmlEl.classList.remove("dark");
+                htmlEl.classList.add("light");
+                bodyContainer.className = "app-bg-light";
+                themeIcon.className = "fa-solid fa-moon text-slate-700";
+                localStorage.setItem("app_theme", "light");
+            } else {
+                htmlEl.classList.remove("light");
+                htmlEl.classList.add("dark");
+                bodyContainer.className = "app-bg-dark";
+                themeIcon.className = "fa-solid fa-sun text-yellow-400";
+                localStorage.setItem("app_theme", "dark");
+            }
+        }
+
         const theoryTopics = [
             {
                 id: 1,
@@ -649,8 +721,8 @@
                 summary: "J.J. Tomsonning «keksdagi mayiz» modeli va E. Rezerfordning alfa-zarralar sochilishi tajribasi hamda planetar model.",
                 content: `
                     <p><b>J.J. Tomson modeli (1904-yil):</b> Elektron kashf etilgandan so'ng, Tomson atomni radiusi R ≈ 10⁻¹⁰ m bo'lgan musbat zaryadlangan shar va uning ichida muvozanatda joylashgan elektronlardan iborat deb tasavvur qildi.</p>
-                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 my-2">
-                        <b class="text-cyan-400">Rezerford tajribasi (1911-yil):</b> Yupqa oltin folgaga α-zarralar (⁴₂He yadrolari) dastasi yo'naltirildi. Zarralarning aksariyati to'g'ri o'tib ketdi, biroq kichik qismi katta burchaklarga (>90°) og'di.
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2">
+                        <b class="text-cyan-600 dark:text-cyan-400">Rezerford tajribasi (1911-yil):</b> Yupqa oltin folgaga α-zarralar (⁴₂He yadrolari) dastasi yo'naltirildi. Zarralarning aksariyati to'g'ri o'tib ketdi, biroq kichik qismi katta burchaklarga (>90°) og'di.
                     </div>
                     <p><b>Planetar model xulosalari:</b></p>
                     <ul class="list-disc pl-4 space-y-1">
@@ -669,9 +741,9 @@
                 summary: "Klassik elektrodinamika inqirozi, statsionar holatlar postulati, chastotalar qoidasi va energetik sathlar.",
                 content: `
                     <p>Rezerfordning planetar modeli atomning turg'unligini tushuntira olmadi. 1913-yilda Daniyalik fizik <b>Niels Bor</b> kvant nazariyasiga asoslangan 2 ta postulatni ilgari surdi:</p>
-                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 my-2 space-y-2">
-                        <p><b class="text-purple-400">I Postulat (Statsionar holatlar):</b> Atomda elektronlar harakatlanishi mumkin bo'lgan shunday statsionar orbitalar mavjudki, ularda harakatlanayotgan elektron elektromagnit to'lqin nurlatmaydi. Kvantlash sharti: m·v·r = n·ħ (n = 1, 2, 3...).</p>
-                        <p><b class="text-cyan-400">II Postulat (Chastotalar qoidasi):</b> Elektron bir statsionar orbitadan (Eₙ) ikkinchisiga (Eₖ) o'tgandagina energiya kvanti (foton) nurlanadi yoki yutiladi: hν = Eₙ - Eₖ</p>
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2 space-y-2">
+                        <p><b class="text-purple-600 dark:text-purple-400">I Postulat (Statsionar holatlar):</b> Atomda elektronlar harakatlanishi mumkin bo'lgan shunday statsionar orbitalar mavjudki, ularda harakatlanayotgan elektron elektromagnit to'lqin nurlatmaydi. Kvantlash sharti: m·v·r = n·ħ (n = 1, 2, 3...).</p>
+                        <p><b class="text-cyan-600 dark:text-cyan-400">II Postulat (Chastotalar qoidasi):</b> Elektron bir statsionar orbitadan (Eₙ) ikkinchisiga (Eₖ) o'tgandagina energiya kvanti (foton) nurlanadi yoki yutiladi: hν = Eₙ - Eₖ</p>
                     </div>
                     <p><b>Vodorod atomi energetik sathlari:</b> Eₙ = -13.6 / n² (eV). Asosiy holatda (n=1) energiya E₁ = -13.6 eV ga teng.</p>
                 `
@@ -685,8 +757,8 @@
                 summary: "Mikrozarralarning ikki yoqlama tabiati, Lui de-Broyl formulasi va Geyzenbergning noaniqlik munosabati.",
                 content: `
                     <p>1924-yilda <b>Lui de-Broyl</b> to'lqin-zarra dualizmi faqat yorug'lik (fotonlar) uchungina emas, balki barcha moddiy mikrozarralar (elektron, proton, atom) uchun ham xos degan gipotezani ilgari surdi.</p>
-                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 my-2">
-                        <b class="text-emerald-400">De-Broyl formulasi:</b> Har qanday p = m·v impulsli zarraga quyidagi to'lqin uzunligi mos keladi: λ = h / p = h / (m·v)
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2">
+                        <b class="text-emerald-600 dark:text-emerald-400">De-Broyl formulasi:</b> Har qanday p = m·v impulsli zarraga quyidagi to'lqin uzunligi mos keladi: λ = h / p = h / (m·v)
                     </div>
                     <p><b>Geyzenberg noaniqlik prinsipi (1927):</b> Mikrozarraning koordinatasi (x) va impulsi (pₓ) bir vaqtning o'zida mutlaq aniqlikda o'lchanishi mumkin emas: Δx · Δpₓ ≥ ħ / 2.</p>
                 `
@@ -706,8 +778,8 @@
                         <li><b>Magnit kvant soni (mₗ = -l ... +l):</b> Orbitalning fazodagi yo'nalishini belgilaydi.</li>
                         <li><b>Spin kvant soni (mₛ = ±1/2):</b> Elektronning xususiy mexanik va magnit momentini ifodalaydi.</li>
                     </ul>
-                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 mt-2">
-                        <b class="text-amber-400">Pauli taqiq prinsipi:</b> Atomda to'rttala kvant soni bir xil bo'lgan ikkita elektron bo'lishi mumkin emas. Har bir qobiqda maksimal N_max = 2n² ta elektron joylashadi.
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 mt-2">
+                        <b class="text-amber-600 dark:text-amber-400">Pauli taqiq prinsipi:</b> Atomda to'rttala kvant soni bir xil bo'lgan ikkita elektron bo'lishi mumkin emas. Har bir qobiqda maksimal N_max = 2n² ta elektron joylashadi.
                     </div>
                 `
             },
@@ -725,8 +797,8 @@
                         <li>N — neytronlar soni.</li>
                         <li>A = Z + N — massa soni (umumiy nuklonlar soni).</li>
                     </ul>
-                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 my-2">
-                        <b class="text-rose-400">Massa defekti va bog'lanish energiyasi:</b> Yadro massasi har doim uni tashkil etuvchi erkin nuklonlar massalari yig'indisidan kichik bo'ladi:
+                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2">
+                        <b class="text-rose-600 dark:text-rose-400">Massa defekti va bog'lanish energiyasi:</b> Yadro massasi har doim uni tashkil etuvchi erkin nuklonlar massalari yig'indisidan kichik bo'ladi:
                         <br>Δm = Z·mₚ + (A - Z)·mₙ - M_yadro
                         <br>E_bog' = Δm · c² ≈ Δm (m.a.b.) × 931.5 MeV
                     </div>
@@ -762,15 +834,15 @@
                 container.innerHTML += `
                     <div onclick="openTheoryModal(${item.id})" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-cyan-500/40 transition active:scale-[0.99]">
                         <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5">
                                 <i class="fa-solid ${item.icon}"></i>
                             </div>
                             <div class="flex-1">
-                                <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-800 text-cyan-300">${item.tag}</span>
-                                <h3 class="text-sm font-bold text-white mt-1">${item.title}</h3>
-                                <p class="text-xs text-slate-400 mt-1 line-clamp-2">${item.summary}</p>
+                                <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-cyan-700 dark:text-cyan-300">${item.tag}</span>
+                                <h3 class="text-sm font-bold mt-1">${item.title}</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">${item.summary}</p>
                             </div>
-                            <i class="fa-solid fa-chevron-right text-slate-500 text-xs self-center"></i>
+                            <i class="fa-solid fa-chevron-right text-slate-400 text-xs self-center"></i>
                         </div>
                     </div>
                 `;
@@ -802,13 +874,13 @@
             document.getElementById("tab-" + tabId).classList.remove("hidden");
 
             document.querySelectorAll(".nav-btn").forEach(btn => {
-                btn.classList.remove("text-cyan-400");
-                btn.classList.add("text-slate-400");
+                btn.classList.remove("text-cyan-600", "dark:text-cyan-400");
+                btn.classList.add("text-slate-500", "dark:text-slate-400");
             });
             const activeBtn = document.getElementById("nav-" + tabId);
             if (activeBtn) {
-                activeBtn.classList.remove("text-slate-400");
-                activeBtn.classList.add("text-cyan-400");
+                activeBtn.classList.remove("text-slate-500", "dark:text-slate-400");
+                activeBtn.classList.add("text-cyan-600", "dark:text-cyan-400");
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -817,7 +889,7 @@
             ['problems', 'calc', 'quiz'].forEach(s => {
                 document.getElementById('practice-' + s).classList.add('hidden');
                 const btn = document.getElementById('psub-' + s);
-                btn.className = "py-2 rounded-lg text-slate-400 hover:text-white transition";
+                btn.className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
             });
             document.getElementById('practice-' + sub).classList.remove('hidden');
             document.getElementById('psub-' + sub).className = "py-2 rounded-lg bg-purple-600 text-white transition";
@@ -839,9 +911,9 @@
             const energyEv = energyJ / 1.602e-19;
 
             document.getElementById("calc-photon-res").innerHTML = `
-                <div>Chastota (ν): <span class="text-cyan-400 font-bold">${(freq/1e14).toFixed(2)} × 10¹⁴ Hz</span></div>
-                <div>Energiya (Joul): <span class="text-purple-400 font-bold">${(energyJ*1e19).toFixed(2)} × 10⁻¹⁹ J</span></div>
-                <div>Energiya (eV): <span class="text-emerald-400 font-bold">${energyEv.toFixed(2)} eV</span></div>
+                <div>Chastota (ν): <span class="text-cyan-600 dark:text-cyan-400 font-bold">${(freq/1e14).toFixed(2)} × 10¹⁴ Hz</span></div>
+                <div>Energiya (Joul): <span class="text-purple-600 dark:text-purple-400 font-bold">${(energyJ*1e19).toFixed(2)} × 10⁻¹⁹ J</span></div>
+                <div>Energiya (eV): <span class="text-emerald-600 dark:text-emerald-400 font-bold">${energyEv.toFixed(2)} eV</span></div>
             `;
         }
 
@@ -849,7 +921,7 @@
             const ni = parseInt(document.getElementById("calc-ni").value);
             const nf = parseInt(document.getElementById("calc-nf").value);
             if (ni === nf) {
-                document.getElementById("calc-rydberg-res").innerHTML = `<div class="text-rose-400 font-bold">Boshlang'ich va oxirgi pog'onalar farqli bo'lishi kerak!</div>`;
+                document.getElementById("calc-rydberg-res").innerHTML = `<div class="text-rose-600 dark:text-rose-400 font-bold">Boshlang'ich va oxirgi pog'onalar farqli bo'lishi kerak!</div>`;
                 return;
             }
             const Ei = -13.6 / (ni * ni);
@@ -859,9 +931,9 @@
             const type = ni > nf ? "Nurlanish (Emissiya)" : "Yutilish (Absorbsiya)";
 
             document.getElementById("calc-rydberg-res").innerHTML = `
-                <div>Jarayon: <span class="text-amber-400 font-bold">${type}</span></div>
-                <div>Foton energiyasi (ΔE): <span class="text-emerald-400 font-bold">${dE.toFixed(2)} eV</span></div>
-                <div>To'lqin uzunligi (λ): <span class="text-cyan-400 font-bold">${lambdaNm.toFixed(1)} nm</span></div>
+                <div>Jarayon: <span class="text-amber-600 dark:text-amber-400 font-bold">${type}</span></div>
+                <div>Foton energiyasi (ΔE): <span class="text-emerald-600 dark:text-emerald-400 font-bold">${dE.toFixed(2)} eV</span></div>
+                <div>To'lqin uzunligi (λ): <span class="text-cyan-600 dark:text-cyan-400 font-bold">${lambdaNm.toFixed(1)} nm</span></div>
             `;
         }
 
@@ -907,7 +979,7 @@
             optsDiv.innerHTML = "";
             item.opts.forEach((opt, idx) => {
                 optsDiv.innerHTML += `
-                    <button onclick="checkQuizAnswer(${idx})" class="quiz-opt-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-purple-500 text-xs text-slate-200 transition">
+                    <button onclick="checkQuizAnswer(${idx})" class="quiz-opt-btn w-full text-left p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-purple-500 text-xs transition shadow-sm">
                         ${opt}
                     </button>
                 `;
@@ -924,13 +996,13 @@
 
             if (selected === item.ans) {
                 quizScore += 20;
-                btns[selected].classList.add("bg-emerald-600/30", "border-emerald-500", "text-emerald-300");
-                fb.className = "p-3 rounded-xl text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+                btns[selected].classList.add("bg-emerald-600/30", "border-emerald-500", "text-emerald-700", "dark:text-emerald-300");
+                fb.className = "p-3 rounded-xl text-xs font-medium bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30";
                 fb.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Barakalla! To'g'ri javob.`;
             } else {
-                btns[selected].classList.add("bg-rose-600/30", "border-rose-500", "text-rose-300");
-                btns[item.ans].classList.add("bg-emerald-600/30", "border-emerald-500", "text-emerald-300");
-                fb.className = "p-3 rounded-xl text-xs font-medium bg-rose-500/20 text-rose-300 border border-rose-500/30";
+                btns[selected].classList.add("bg-rose-600/30", "border-rose-500", "text-rose-700", "dark:text-rose-300");
+                btns[item.ans].classList.add("bg-emerald-600/30", "border-emerald-500", "text-emerald-700", "dark:text-emerald-300");
+                fb.className = "p-3 rounded-xl text-xs font-medium bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/30";
                 fb.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> Noto'g'ri! To'g'ri javob belgilandi.`;
             }
             document.getElementById("quiz-score").innerText = `Ball: ${quizScore}`;
@@ -949,7 +1021,7 @@
         function switchLab(num) {
             [1, 2, 3].forEach(n => {
                 document.getElementById("lab-panel-" + n).classList.add("hidden");
-                document.getElementById("lab-btn-" + n).className = "py-2 rounded-lg text-slate-400 hover:text-white transition";
+                document.getElementById("lab-btn-" + n).className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
             });
             document.getElementById("lab-panel-" + num).classList.remove("hidden");
             document.getElementById("lab-btn-" + num).className = "py-2 rounded-lg bg-emerald-600 text-white transition";
@@ -1091,7 +1163,7 @@
                 const btn = document.getElementById("bohr-n" + n);
                 btn.className = n === bohrN 
                     ? "py-2 rounded-xl bg-cyan-600 text-white font-bold text-xs border border-cyan-400"
-                    : "py-2 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs border border-slate-700";
+                    : "py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700";
             });
 
             const Ei = -13.6 / (oldN * oldN);
@@ -1245,7 +1317,7 @@
             let html = `<div class="space-y-1.5">`;
             cwWords.forEach((item) => {
                 html += `<div class="flex items-center justify-center space-x-1">`;
-                html += `<span class="w-5 text-xs font-bold text-amber-400 text-right mr-1">${item.num}.</span>`;
+                html += `<span class="w-5 text-xs font-bold text-amber-600 dark:text-amber-400 text-right mr-1">${item.num}.</span>`;
                 for (let c = 0; c < 8; c++) {
                     if (c >= item.col && c < item.col + item.word.length) {
                         const charIdx = c - item.col;
@@ -1254,7 +1326,7 @@
                         html += `
                             <input type="text" maxlength="1" 
                                 data-ans="${expectedChar}" 
-                                class="cw-cell bg-slate-900 border ${isHighlight ? 'border-cyan-500/60' : 'border-slate-700'} text-white"
+                                class="cw-cell bg-slate-100 dark:bg-slate-900 border ${isHighlight ? 'border-cyan-500/60' : 'border-slate-300 dark:border-slate-700'} text-slate-900 dark:text-white shadow-sm"
                                 oninput="moveNextCell(this)">
                         `;
                     } else {
@@ -1285,22 +1357,22 @@
                 const val = inp.value.trim().toUpperCase();
                 const ans = inp.getAttribute("data-ans");
                 if (val === ans) {
-                    inp.classList.remove("border-slate-700", "border-rose-500", "bg-rose-950/40");
-                    inp.classList.add("border-emerald-500", "bg-emerald-950/40", "text-emerald-300");
+                    inp.classList.remove("border-slate-300", "dark:border-slate-700", "border-rose-500", "bg-rose-950/40");
+                    inp.classList.add("border-emerald-500", "bg-emerald-100", "dark:bg-emerald-950/40", "text-emerald-700", "dark:text-emerald-300");
                     correctCount++;
                 } else {
-                    inp.classList.remove("border-slate-700", "border-emerald-500", "bg-emerald-950/40");
-                    inp.classList.add("border-rose-500", "bg-rose-950/40", "text-rose-300");
+                    inp.classList.remove("border-slate-300", "dark:border-slate-700", "border-emerald-500", "bg-emerald-950/40");
+                    inp.classList.add("border-rose-500", "bg-rose-100", "dark:bg-rose-950/40", "text-rose-700", "dark:text-rose-300");
                 }
             });
 
             const status = document.getElementById("cw-status");
             status.classList.remove("hidden");
             if (correctCount === inputs.length) {
-                status.className = "p-3 rounded-xl text-xs font-bold text-center bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+                status.className = "p-3 rounded-xl text-xs font-bold text-center bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30";
                 status.innerHTML = `Tabriklaymiz! Barcha ${inputs.length} ta harfni to'g'ri topdingiz!`;
             } else {
-                status.className = "p-3 rounded-xl text-xs font-bold text-center bg-amber-500/20 text-amber-300 border border-amber-500/30";
+                status.className = "p-3 rounded-xl text-xs font-bold text-center bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30";
                 status.innerHTML = `Natija: ${correctCount} / ${inputs.length} ta harf to'g'ri. Qizil kataklarni qayta tekshiring.`;
             }
         }
@@ -1313,6 +1385,7 @@
         }
 
         window.onload = () => {
+            initTheme();
             renderTheoryList();
             renderQuiz();
             renderCrossword();
