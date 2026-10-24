@@ -166,11 +166,11 @@
                 <div class="flex items-center justify-between">
                     <div class="w-3/5 space-y-2">
                         <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30">
-                            Interaktiv mobil qo'llanma
+                            Video darsliklar bilan
                         </span>
                         <h2 class="text-xl font-extrabold leading-snug">Kvant va Atom olamiga sayohat!</h2>
                         <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                            Nazariya, masalalar, virtual laboratoriyalar va krossvordlar jamlanmasi.
+                            Nazariya (YouTube video qo'llanmalar bilan), laboratoriya va testlar.
                         </p>
                     </div>
                     <div class="atom-spinner">
@@ -185,7 +185,7 @@
             <div class="grid grid-cols-4 gap-2 text-center">
                 <div class="glass-card p-2.5 rounded-xl">
                     <div class="text-cyan-600 dark:text-cyan-400 font-bold text-base">6 ta</div>
-                    <div class="text-[10px] text-slate-500 dark:text-slate-400">Mavzular</div>
+                    <div class="text-[10px] text-slate-500 dark:text-slate-400">Video Ma'ruza</div>
                 </div>
                 <div class="glass-card p-2.5 rounded-xl">
                     <div class="text-purple-600 dark:text-purple-400 font-bold text-base">3 ta</div>
@@ -208,8 +208,8 @@
                         <div class="w-11 h-11 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-xl mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-book-open-reader"></i>
                         </div>
-                        <h4 class="font-bold text-sm">Nazariy qism</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Rangli va batafsil ma'ruzalar</p>
+                        <h4 class="font-bold text-sm">Nazariya + Video</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">YouTube darsliklar va matnlar</p>
                     </div>
 
                     <div onclick="switchTab('practice')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-purple-500/50 transition-all active:scale-95 group">
@@ -254,10 +254,10 @@
             </div>
         </section>
 
-        <!-- 2. NAZARIY MA'LUMOTLAR (RANGLI VA >500 BELGI) -->
+        <!-- 2. NAZARIY MA'LUMOTLAR (RANGLI, >500 BELGI + YOUTUBE VIDEO) -->
         <section id="tab-theory" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
-                <h2 class="text-lg font-bold"><i class="fa-solid fa-book-open text-cyan-600 dark:text-cyan-400 mr-2"></i>Nazariy Ma'lumotlar</h2>
+                <h2 class="text-lg font-bold"><i class="fa-solid fa-book-open text-cyan-600 dark:text-cyan-400 mr-2"></i>Nazariya + YouTube Video</h2>
                 <span class="text-xs text-slate-500 dark:text-slate-400">6 ta modul</span>
             </div>
 
@@ -513,7 +513,7 @@
             </div>
         </section>
 
-        <!-- 5. 5 TA KROSSVORD (Javobsiz) -->
+        <!-- 5. 5 TA KROSSVORD -->
         <section id="tab-crossword" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
                 <div>
@@ -569,7 +569,7 @@
                 <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-xl"><i class="fa-solid fa-atom"></i></div>
                 <div>
                     <h3 class="font-bold text-sm">Atom Fizikasi Mobil Ilovasi</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Versiya 2.6 (Rangli Nazariya > 500 belgi)</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Versiya 2.7 (YouTube Videolar bilan)</p>
                 </div>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Ushbu dastur talabalar va o'quvchilar uchun Atom va Yadro fizikasi fanidan mukammal interaktiv mobil qo'llanmadir.</p>
@@ -639,7 +639,7 @@
             }
         }
 
-        /* --- NAZARIYA MA'LUMOTLARI (RANGLI BLOKLAR, >500 BELGI) --- */
+        /* --- NAZARIYA MA'LUMOTLARI (RANGLI BLOKLAR, >500 BELGI + YOUTUBE VIDEO) --- */
         const theoryTopics = [
             {
                 id: 1,
@@ -648,6 +648,7 @@
                 icon: "fa-atom",
                 color: "cyan",
                 summary: "J.J. Tomsonning «keksdagi mayiz» modeli va E. Rezerfordning alfa-zarralar sochilishi tajribasi.",
+                videoId: "RyxIZzPJmng", // YouTube video ID (Rezerford va Bor)
                 content: `
                     <div class="p-3 bg-cyan-500/10 border-l-4 border-cyan-500 rounded-r-xl mb-3">
                         <h4 class="font-bold text-cyan-600 dark:text-cyan-400 mb-1">Kirish va Tomson modeli (1904)</h4>
@@ -670,6 +671,7 @@
                 icon: "fa-circle-nodes",
                 color: "purple",
                 summary: "Klassik fizika inqirozi, Borning statsionar holatlar postulati va chastotalar qoidasi.",
+                videoId: "GNZqkhRHsOU",
                 content: `
                     <div class="p-3 bg-indigo-500/10 border-l-4 border-indigo-500 rounded-r-xl mb-3">
                         <h4 class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Klassik fizika inqirozi</h4>
@@ -692,6 +694,7 @@
                 icon: "fa-wave-square",
                 color: "emerald",
                 summary: "Mikrozarralarning ikkiyoqlama tabiati, Lui de-Broyl formulasi va Geyzenberg tamoyili.",
+                videoId: "2yfpDk_F6ps",
                 content: `
                     <div class="p-3 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl mb-3">
                         <h4 class="font-bold text-emerald-600 dark:text-emerald-400 mb-1">De-Broyl gipotezasi (1924)</h4>
@@ -714,6 +717,7 @@
                 icon: "fa-layer-group",
                 color: "amber",
                 summary: "Bosh, orbital, magnit va spin kvant sonlari hamda Mendeleyev sistemasining fizik asosi.",
+                videoId: "lQRnK0BIzXs",
                 content: `
                     <div class="p-3 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl mb-3">
                         <h4 class="font-bold text-amber-600 dark:text-amber-400 mb-1">To'rtta kvant soni</h4>
@@ -736,6 +740,7 @@
                 icon: "fa-circle-radiation",
                 color: "rose",
                 summary: "Proton-neytron modeli, massa defekti va Eynshteynning energiya-massa munosabati.",
+                videoId: "GNZqkhRHsOU",
                 content: `
                     <div class="p-3 bg-rose-500/10 border-l-4 border-rose-500 rounded-r-xl mb-3">
                         <h4 class="font-bold text-rose-600 dark:text-rose-400 mb-1">Yadroning nuklon modeli</h4>
@@ -758,6 +763,7 @@
                 icon: "fa-biohazard",
                 color: "emerald",
                 summary: "Alfa, beta, gamma yemirilish turlari va radioaktiv yemirilish qonuniyati.",
+                videoId: "2yfpDk_F6ps",
                 content: `
                     <div class="p-3 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl mb-3">
                         <h4 class="font-bold text-emerald-600 dark:text-emerald-400 mb-1">Radioaktivlik hodisasi</h4>
@@ -795,13 +801,31 @@
             });
         }
         function filterTheory() { renderTheoryList(document.getElementById("theory-search").value); }
+        
         function openTheoryModal(id) {
             const topic = theoryTopics.find(t => t.id === id);
             document.getElementById("modal-title").innerText = topic.title;
-            document.getElementById("modal-body").innerHTML = topic.content;
+            
+            // Modal ichiga matn va YouTube video pleyerni joylash
+            document.getElementById("modal-body").innerHTML = `
+                <div class="space-y-4">
+                    <!-- YouTube Video Pleyer -->
+                    <div class="relative w-full rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-black aspect-video">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/${topic.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="space-y-2">
+                        ${topic.content}
+                    </div>
+                </div>
+            `;
             document.getElementById("theory-modal").classList.remove("hidden");
         }
-        function closeTheoryModal() { document.getElementById("theory-modal").classList.add("hidden"); }
+        function closeTheoryModal() { 
+            // Modal yopilganda videoni to'xtatish uchun iframe src'ni tozalash
+            document.getElementById("modal-body").innerHTML = "";
+            document.getElementById("theory-modal").classList.add("hidden"); 
+        }
+
         function openInfoModal() { document.getElementById("info-modal").classList.remove("hidden"); }
         function closeInfoModal() { document.getElementById("info-modal").classList.add("hidden"); }
 
@@ -998,7 +1022,7 @@
             }, 200);
         }
 
-        /* 5 TA KROSSVORD BAZASI */
+        /* 5 TA KROSSVORD */
         const crosswordSets = [
             {
                 title: "1-Mavzu: Atom tuzilishi va modellar",
