@@ -1,0 +1,14 @@
+{
+  "name": "atom-fizikasi-app",
+  "version": "2.0.0",
+  "description": "Atom fizikasi fanidan interaktiv mobil ilova (tabiiy-fanlar.uz)",
+  "main": "www/index.html",
+  "scripts": {
+    "build": "echo 'Web assets ready in www/'"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  }
+}
