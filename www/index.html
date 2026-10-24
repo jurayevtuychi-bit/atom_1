@@ -7,9 +7,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
     <!-- FontAwesome Ikonkalari -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,7 +24,6 @@
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* Kunduzgi va Tungi fonlar */
         .app-bg-dark {
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0f172a 50%, #090d16 100%);
             color: #f8fafc;
@@ -39,8 +36,6 @@
             min-height: 100vh;
             padding-bottom: 85px;
         }
-
-        /* Glassmorphism kartochkalar rejimlarga moslashuvi */
         .dark .glass-card {
             background: rgba(30, 41, 59, 0.65);
             backdrop-filter: blur(12px);
@@ -54,7 +49,6 @@
             border: 1px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         }
-
         .dark .glass-nav {
             background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(16px);
@@ -67,7 +61,6 @@
             -webkit-backdrop-filter: blur(16px);
             border-top: 1px solid rgba(0, 0, 0, 0.08);
         }
-
         .atom-spinner {
             position: relative;
             width: 110px;
@@ -114,7 +107,6 @@
         .orbit-1 { animation: spin1 3s linear infinite; }
         .orbit-2 { animation: spin2 3.5s linear infinite; }
         .orbit-3 { animation: spin3 4s linear infinite; }
-
         @keyframes spin1 { 0% { transform: rotate(0deg) scaleY(0.45); } 100% { transform: rotate(360deg) scaleY(0.45); } }
         @keyframes spin2 { 0% { transform: rotate(60deg) scaleY(0.45); } 100% { transform: rotate(420deg) scaleY(0.45); } }
         @keyframes spin3 { 0% { transform: rotate(120deg) scaleY(0.45); } 100% { transform: rotate(480deg) scaleY(0.45); } }
@@ -141,7 +133,7 @@
 </head>
 <body id="body-container" class="app-bg-dark">
 
-    <!-- YUQORI HEADER (App Bar) -->
+    <!-- YUQORI HEADER -->
     <header class="sticky top-0 z-40 glass-card px-4 py-3 flex items-center justify-between border-b shadow-lg transition-colors">
         <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-md shadow-cyan-500/20 text-white">
@@ -155,7 +147,6 @@
             </div>
         </div>
         <div class="flex items-center space-x-2">
-            <!-- Tungi/Kunduzgi rejim tugmasi -->
             <button onclick="toggleTheme()" id="theme-toggle-btn" class="w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-yellow-400 hover:scale-105 transition shadow-sm">
                 <i id="theme-icon" class="fa-solid fa-sun"></i>
             </button>
@@ -165,12 +156,11 @@
         </div>
     </header>
 
-    <!-- ASOSIY KONTENT KONTEYNERI -->
+    <!-- ASOSIY KONTENT -->
     <main class="max-w-md mx-auto px-4 pt-4">
 
-        <!-- ==================== 1. BOSH SAHIFA (HOME) ==================== -->
+        <!-- 1. BOSH SAHIFA -->
         <section id="tab-home" class="tab-content space-y-5">
-            <!-- Hero Banner -->
             <div class="glass-card rounded-2xl p-5 relative overflow-hidden border shadow-xl">
                 <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl"></div>
                 <div class="flex items-center justify-between">
@@ -180,7 +170,7 @@
                         </span>
                         <h2 class="text-xl font-extrabold leading-snug">Kvant va Atom olamiga sayohat!</h2>
                         <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                            Nazariya, masalalar, virtual laboratoriyalar va intellektual o'yinlar jamlanmasi.
+                            Nazariya, masalalar, virtual laboratoriyalar va krossvordlar jamlanmasi.
                         </p>
                     </div>
                     <div class="atom-spinner">
@@ -192,7 +182,6 @@
                 </div>
             </div>
 
-            <!-- Tezkor statistika -->
             <div class="grid grid-cols-4 gap-2 text-center">
                 <div class="glass-card p-2.5 rounded-xl">
                     <div class="text-cyan-600 dark:text-cyan-400 font-bold text-base">6 ta</div>
@@ -203,16 +192,15 @@
                     <div class="text-[10px] text-slate-500 dark:text-slate-400">Virtual Lab</div>
                 </div>
                 <div class="glass-card p-2.5 rounded-xl">
-                    <div class="text-amber-600 dark:text-amber-400 font-bold text-base">15+</div>
+                    <div class="text-amber-600 dark:text-amber-400 font-bold text-base">10 ta</div>
                     <div class="text-[10px] text-slate-500 dark:text-slate-400">Masalalar</div>
                 </div>
                 <div class="glass-card p-2.5 rounded-xl">
-                    <div class="text-emerald-600 dark:text-emerald-400 font-bold text-base">7 ta</div>
+                    <div class="text-emerald-600 dark:text-emerald-400 font-bold text-base">5 ta</div>
                     <div class="text-[10px] text-slate-500 dark:text-slate-400">Krossvord</div>
                 </div>
             </div>
 
-            <!-- Bo'limlar menyusi (Katalog) -->
             <div>
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1">Ilova bo'limlari</h3>
                 <div class="grid grid-cols-2 gap-3">
@@ -229,7 +217,7 @@
                             <i class="fa-solid fa-calculator"></i>
                         </div>
                         <h4 class="font-bold text-sm">Amaliyot va Test</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Masalalar, kalkulyator va testlar</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">10 ta masala va kalkulyator</p>
                     </div>
 
                     <div onclick="switchTab('lab')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-emerald-500/50 transition-all active:scale-95 group">
@@ -245,12 +233,11 @@
                             <i class="fa-solid fa-puzzle-piece"></i>
                         </div>
                         <h4 class="font-bold text-sm">Krossvord</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Intellektual fizik boshqotirma</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">5 ta mavzuli boshqotirma</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Manba havolasi (tabiiy-fanlar.uz) -->
             <div class="glass-card rounded-2xl p-4 border border-blue-500/20 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
@@ -267,7 +254,7 @@
             </div>
         </section>
 
-        <!-- ==================== 2. NAZARIY MA'LUMOTLAR ==================== -->
+        <!-- 2. NAZARIY MA'LUMOTLAR -->
         <section id="tab-theory" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-lg font-bold"><i class="fa-solid fa-book-open text-cyan-600 dark:text-cyan-400 mr-2"></i>Nazariy Ma'lumotlar</h2>
@@ -283,127 +270,167 @@
             <div id="theory-list" class="space-y-3"></div>
         </section>
 
-        <!-- ==================== 3. AMALIYOT VA MASALALAR ==================== -->
+        <!-- 3. AMALIYOT VA MASALALAR (10 TA MASALA) -->
         <section id="tab-practice" class="tab-content hidden space-y-4">
             <h2 class="text-lg font-bold"><i class="fa-solid fa-square-root-variable text-purple-600 dark:text-purple-400 mr-2"></i>Amaliyot va Test</h2>
 
             <div class="grid grid-cols-3 gap-1.5 bg-slate-200 dark:bg-slate-900 p-1 rounded-xl border border-slate-300 dark:border-slate-800 text-xs font-semibold">
-                <button onclick="switchPracticeSub('problems')" id="psub-problems" class="py-2 rounded-lg bg-purple-600 text-white transition">Masalalar</button>
+                <button onclick="switchPracticeSub('problems')" id="psub-problems" class="py-2 rounded-lg bg-purple-600 text-white transition">Masalalar (10)</button>
                 <button onclick="switchPracticeSub('calc')" id="psub-calc" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">Kalkulyator</button>
                 <button onclick="switchPracticeSub('quiz')" id="psub-quiz" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">Test (Quiz)</button>
             </div>
 
-            <!-- 3.1. Masalalar va yechimlar -->
+            <!-- 10 ta Masala Ro'yxati -->
             <div id="practice-problems" class="space-y-3">
+                <!-- 1 -->
                 <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-purple-500">
                     <div class="flex justify-between items-center">
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-500/20 text-purple-700 dark:text-purple-300">1-Masala | Bor postulatlari</span>
                         <span class="text-[11px] text-slate-500 dark:text-slate-400">Oson</span>
                     </div>
-                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
-                        Vodorod atomida elektron 3-energetik pog'onadan (E₃ = -1.51 eV) 2-energetik pog'onaga (E₂ = -3.4 eV) o'tganda nurlanadigan fotonning energiyasini (eV da) toping.
-                    </p>
-                    <button onclick="toggleSolution('sol-1')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2">
-                        <i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish
-                    </button>
-                    <div id="sol-1" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
-                        <p><b>Berilgan:</b> E₃ = -1.51 eV, E₂ = -3.4 eV</p>
-                        <p><b>Formula:</b> hν = E₃ - E₂</p>
-                        <p><b>Hisoblash:</b> hν = -1.51 - (-3.4) = 1.89 eV</p>
-                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 1.89 eV (qizil spektr chizig'i, Hα)</p>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Vodorod atomida elektron 3-pog'onadan (E₃ = -1.51 eV) 2-pog'onaga (E₂ = -3.4 eV) o'tganda nurlanadigan foton energiyasini toping.</p>
+                    <button onclick="toggleSolution('sol-1')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-1" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> hν = E₃ - E₂ = -1.51 - (-3.4)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 1.89 eV</p>
                     </div>
                 </div>
-
+                <!-- 2 -->
                 <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-cyan-500">
                     <div class="flex justify-between items-center">
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-700 dark:text-cyan-300">2-Masala | De-Broyl gipotezasi</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-700 dark:text-cyan-300">2-Masala | De-Broyl to'lqini</span>
                         <span class="text-[11px] text-slate-500 dark:text-slate-400">O'rtacha</span>
                     </div>
-                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
-                        Tezligi v = 2 × 10⁶ m/s bo'lgan elektronning de-Broyl to'lqin uzunligini toping. (h = 6.63 × 10⁻³⁴ J·s, mₑ = 9.1 × 10⁻³¹ kg)
-                    </p>
-                    <button onclick="toggleSolution('sol-2')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2">
-                        <i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish
-                    </button>
-                    <div id="sol-2" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
-                        <p><b>Formula:</b> λ = h / (mₑ · v)</p>
-                        <p><b>Hisoblash:</b> λ = 6.63×10⁻³⁴ / (9.1×10⁻³¹ × 2×10⁶) ≈ 3.64 × 10⁻¹⁰ m</p>
-                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 0.364 nm (yoki 3.64 Å)</p>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Tezligi v = 2·10⁶ m/s bo'lgan elektronning de-Broyl to'lqin uzunligini toping. (mₑ = 9.1·10⁻³¹ kg, h = 6.63·10⁻³⁴ J·s)</p>
+                    <button onclick="toggleSolution('sol-2')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-2" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> λ = h / (mₑ · v) = 6.63·10⁻³⁴ / (9.1·10⁻³¹ × 2·10⁶)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 3.64 × 10⁻¹⁰ m (0.364 nm)</p>
                     </div>
                 </div>
-
+                <!-- 3 -->
                 <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-emerald-500">
                     <div class="flex justify-between items-center">
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">3-Masala | Radioaktiv yemirilish</span>
                         <span class="text-[11px] text-slate-500 dark:text-slate-400">Murakkab</span>
                     </div>
-                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
-                        Radioaktiv izotopning yarim yemirilish davri T = 10 kun. Boshlang'ich atomlar soni N₀ = 8000 ta bo'lsa, t = 30 kundan keyin qancha atom yemirilmay qoladi?
-                    </p>
-                    <button onclick="toggleSolution('sol-3')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2">
-                        <i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish
-                    </button>
-                    <div id="sol-3" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
-                        <p><b>Formula:</b> N = N₀ · 2^(-t/T)</p>
-                        <p><b>Hisoblash:</b> N = 8000 · 2^(-30/10) = 8000 / 8 = 1000 ta</p>
-                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 1000 ta atom qoladi (7000 tasi yemiriladi).</p>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Yarim yemirilish davri T = 10 kun. N₀ = 8000 ta atomdan t = 30 kundan keyin qanchasi qoladi?</p>
+                    <button onclick="toggleSolution('sol-3')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-3" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> N = N₀ · 2^(-t/T) = 8000 · 2⁻³</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 1000 ta</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-amber-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-700 dark:text-amber-300">4-Masala | Foton impulsi</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">Oson</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">To'lqin uzunligi λ = 500 nm bo'lgan yorug'lik kvantining impulsini toping.</p>
+                    <button onclick="toggleSolution('sol-4')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-4" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> p = h / λ = 6.63·10⁻³⁴ / (500·10⁻⁹)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 1.33 × 10⁻²⁷ kg·m/s</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-rose-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-700 dark:text-rose-300">5-Masala | Fotoeffekt qizil chegarasi</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">O'rtacha</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Chiqish ishi A = 2.2 eV bo'lgan metall uchun fotoeffektning qizil chegarasidagi chastotani toping.</p>
+                    <button onclick="toggleSolution('sol-5')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-5" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> νₖ = A / h = (2.2 × 1.6·10⁻¹⁹) / 6.63·10⁻³⁴</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 5.3 × 10¹⁴ Hz</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-indigo-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-700 dark:text-indigo-300">6-Masala | Massa defekti</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">Murakkab</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Geliy yadrosi ⁴₂He ning massa defekti Δm = 0.0304 m.a.b. ga teng. Yadro bog'lanish energiyasini toping.</p>
+                    <button onclick="toggleSolution('sol-6')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-6" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> E = Δm × 931.5 MeV = 0.0304 × 931.5</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 28.3 MeV</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-teal-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-500/20 text-teal-700 dark:text-teal-300">7-Masala | Elektron tezlatgich</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">Oson</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">U = 10 kV potensiallar farqidan o'tgan elektron qanday kinetik energiyaga ega bo'ladi (keV da)?</p>
+                    <button onclick="toggleSolution('sol-7')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-7" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> Wₖ = e·U = 10 keV</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 10 keV (1.6 × 10⁻¹⁵ J)</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-sky-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-700 dark:text-sky-300">8-Masala | α-yemirilish siljishi</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">O'rtacha</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Uran izotopi ²³⁸₉₂U bitta α-yemirilishga uchraganda hosil bo'lgan yangi yadro massasi va zaryadini aniqlang.</p>
+                    <button onclick="toggleSolution('sol-8')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-8" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Qoida:</b> A kamayadi 4 ga, Z kamayadi 2 ga: ²³⁴₉₀Th (Toriy)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: Massa soni 234, Z = 90</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-fuchsia-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-fuchsia-500/20 text-fuchsia-700 dark:text-fuchsia-300">9-Masala | β⁻ yemirilish</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">O'rtacha</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Toriy ²³⁴₉₀Th yadro bitta β⁻ yemirilishga uchrasa, qanday element hosil bo'ladi?</p>
+                    <button onclick="toggleSolution('sol-9')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-9" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Qoida:</b> A o'zgarmaydi, Z bittaga oshadi (Z = 91): ²³⁴₉₁Pa (Protaktiniy)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: ²³⁴₉₁Pa</p>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="glass-card p-4 rounded-2xl space-y-2 border-l-4 border-l-orange-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-orange-500/20 text-orange-700 dark:text-orange-300">10-Masala | Rentgen nurlari</span>
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400">Murakkab</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">Rentgen naychasida U = 40 kV kuchlanish berilganda nurlanadigan rentgen nurlarining minimal to'lqin uzunligini toping.</p>
+                    <button onclick="toggleSolution('sol-10')" class="text-xs text-cyan-600 dark:text-cyan-400 font-semibold flex items-center mt-2"><i class="fa-solid fa-eye mr-1.5"></i> Yechimni ko'rish</button>
+                    <div id="sol-10" class="hidden mt-2 pt-2 border-t border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1 bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl">
+                        <p><b>Formula:</b> e·U = h·c / λₘᵢₙ ⇒ λₘᵢₙ = 1240 / U(kV)</p>
+                        <p class="text-emerald-600 dark:text-emerald-400 font-bold">Javob: 0.031 nm (31 pm)</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 3.2. Interaktiv Fizik Kalkulyator -->
+            <!-- Kalkulyator -->
             <div id="practice-calc" class="hidden space-y-4">
                 <div class="glass-card p-4 rounded-2xl space-y-3">
                     <h3 class="text-sm font-bold text-cyan-600 dark:text-cyan-400"><i class="fa-solid fa-bolt mr-1.5"></i>Foton energiyasi va chastotasi</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">To'lqin uzunligi (λ) orqali foton energiyasini (E) hisoblash:</p>
                     <div>
-                        <label class="text-xs text-slate-700 dark:text-slate-300 block mb-1">To'lqin uzunligi λ (nanometr, nm da):</label>
-                        <input type="number" id="calc-lambda" value="500" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white text-sm">
+                        <label class="text-xs text-slate-700 dark:text-slate-300 block mb-1">To'lqin uzunligi λ (nm):</label>
+                        <input type="number" id="calc-lambda" value="500" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs">
                     </div>
-                    <button onclick="calculatePhoton()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs shadow-lg">
-                        Hisoblash
-                    </button>
+                    <button onclick="calculatePhoton()" class="w-full py-2.5 rounded-xl bg-cyan-600 text-white font-bold text-xs">Hisoblash</button>
                     <div id="calc-photon-res" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-xs space-y-1">
-                        <div>Chastota (ν): <span class="text-cyan-600 dark:text-cyan-400 font-bold">6.00 × 10¹⁴ Hz</span></div>
-                        <div>Energiya (Joul): <span class="text-purple-600 dark:text-purple-400 font-bold">3.98 × 10⁻¹⁹ J</span></div>
-                        <div>Energiya (eV): <span class="text-emerald-600 dark:text-emerald-400 font-bold">2.48 eV</span></div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-4 rounded-2xl space-y-3">
-                    <h3 class="text-sm font-bold text-purple-600 dark:text-purple-400"><i class="fa-solid fa-arrows-up-down mr-1.5"></i>Vodorod atomi energetik o'tishlari</h3>
-                    <div class="grid grid-cols-2 gap-2">
-                        <div>
-                            <label class="text-[11px] text-slate-700 dark:text-slate-300 block mb-1">Boshlang'ich (nᵢ):</label>
-                            <select id="calc-ni" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white text-xs">
-                                <option value="2">n = 2</option>
-                                <option value="3" selected>n = 3</option>
-                                <option value="4">n = 4</option>
-                                <option value="5">n = 5</option>
-                                <option value="6">n = 6</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-[11px] text-slate-700 dark:text-slate-300 block mb-1">Oxirgi pog'ona (n_f):</label>
-                            <select id="calc-nf" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white text-xs">
-                                <option value="1">n = 1 (Layman)</option>
-                                <option value="2" selected>n = 2 (Balmer)</option>
-                                <option value="3">n = 3 (Pashen)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button onclick="calculateRydberg()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold text-xs shadow-lg">
-                        Spektrni hisoblash
-                    </button>
-                    <div id="calc-rydberg-res" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-xs space-y-1">
-                        <div>Jarayon: <span class="text-amber-600 dark:text-amber-400 font-bold">Nurlanish (Emissiya)</span></div>
-                        <div>Foton energiyasi (ΔE): <span class="text-emerald-600 dark:text-emerald-400 font-bold">1.89 eV</span></div>
-                        <div>To'lqin uzunligi (λ): <span class="text-cyan-600 dark:text-cyan-400 font-bold">656.3 nm (Qizil)</span></div>
+                        <div>Chastota: <span class="text-cyan-400 font-bold">6.00 × 10¹⁴ Hz</span></div>
+                        <div>Energiya: <span class="text-emerald-400 font-bold">2.48 eV</span></div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3.3. Interaktiv Test -->
+            <!-- Test -->
             <div id="practice-quiz" class="hidden space-y-4">
                 <div class="glass-card p-5 rounded-2xl space-y-4">
                     <div class="flex justify-between items-center border-b border-slate-300 dark:border-slate-800 pb-2">
@@ -413,150 +440,98 @@
                     <h3 id="quiz-question" class="text-sm font-bold leading-relaxed">Savol yuklanmoqda...</h3>
                     <div id="quiz-options" class="space-y-2.5"></div>
                     <div id="quiz-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
-                    <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden w-full py-2.5 rounded-xl bg-cyan-600 text-white font-bold text-xs">
-                        Keyingi savol <i class="fa-solid fa-arrow-right ml-1"></i>
-                    </button>
+                    <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden w-full py-2.5 rounded-xl bg-cyan-600 text-white font-bold text-xs">Keyingi savol</button>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== 4. VIRTUAL LABORATORIYA ==================== -->
+        <!-- 4. VIRTUAL LABORATORIYA -->
         <section id="tab-lab" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-lg font-bold"><i class="fa-solid fa-microscope text-emerald-600 dark:text-emerald-400 mr-2"></i>Virtual Laboratoriya</h2>
             </div>
-
             <div class="grid grid-cols-3 gap-1.5 bg-slate-200 dark:bg-slate-900 p-1 rounded-xl border border-slate-300 dark:border-slate-800 text-[11px] font-semibold">
                 <button onclick="switchLab(1)" id="lab-btn-1" class="py-2 rounded-lg bg-emerald-600 text-white transition">1. Rezerford</button>
                 <button onclick="switchLab(2)" id="lab-btn-2" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">2. Bor Atomi</button>
                 <button onclick="switchLab(3)" id="lab-btn-3" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">3. Yemirilish</button>
             </div>
 
-            <!-- LAB 1: REZERFORD TAJRIBASI -->
+            <!-- LAB 1 -->
             <div id="lab-panel-1" class="glass-card p-4 rounded-2xl space-y-3">
                 <div class="flex justify-between items-start">
                     <div>
                         <h3 class="text-sm font-bold text-emerald-600 dark:text-emerald-400">Rezerford α-zarralar sochilishi</h3>
                         <p class="text-[11px] text-slate-500 dark:text-slate-400">Alfa-zarralarning oltin yadrosi kulon maydonida og'ishi</p>
                     </div>
-                    <button onclick="resetRutherford()" class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-xs rounded-lg text-slate-700 dark:text-slate-300">
-                        <i class="fa-solid fa-rotate-right mr-1"></i>Tozalash
-                    </button>
+                    <button onclick="resetRutherford()" class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 text-xs rounded-lg">Tozalash</button>
                 </div>
-
                 <div class="relative rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-950">
                     <canvas id="rutherfordCanvas" width="360" height="240" class="w-full h-auto block"></canvas>
                     <div class="absolute top-2 left-2 bg-slate-900/80 px-2 py-1 rounded text-[10px] text-slate-200 border border-slate-800">
                         Zarralar: <span id="alpha-count" class="text-emerald-400 font-bold">0</span> | Og'gan: <span id="alpha-deflected" class="text-amber-400 font-bold">0</span>
                     </div>
                 </div>
-
                 <div class="space-y-2.5 pt-1 text-xs">
                     <div>
-                        <div class="flex justify-between mb-1">
-                            <span class="text-slate-600 dark:text-slate-300">Yadro zaryadi (Z):</span>
-                            <span id="ruth-z-val" class="text-amber-600 dark:text-amber-400 font-bold">79 (Oltin - Au)</span>
-                        </div>
+                        <div class="flex justify-between mb-1"><span>Yadro zaryadi (Z):</span><span id="ruth-z-val" class="text-amber-400 font-bold">79 (Oltin)</span></div>
                         <input type="range" id="ruth-z" min="20" max="100" value="79" oninput="updateRuthParams()" class="w-full accent-emerald-500">
                     </div>
-                    <div>
-                        <div class="flex justify-between mb-1">
-                            <span class="text-slate-600 dark:text-slate-300">α-zarra energiyasi (Eα):</span>
-                            <span id="ruth-e-val" class="text-cyan-600 dark:text-cyan-400 font-bold">5 MeV</span>
-                        </div>
-                        <input type="range" id="ruth-e" min="2" max="10" value="5" oninput="updateRuthParams()" class="w-full accent-cyan-500">
-                    </div>
                     <div class="flex space-x-2 pt-1">
-                        <button onclick="fireAlphaWave()" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-xl font-bold text-white shadow">
-                            <i class="fa-solid fa-play mr-1"></i> Dasta yuborish
-                        </button>
-                        <button onclick="toggleAutoAlpha()" id="auto-alpha-btn" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl font-semibold text-cyan-600 dark:text-cyan-400">
-                            Avto: O'chiq
-                        </button>
+                        <button onclick="fireAlphaWave()" class="flex-1 py-2 bg-emerald-600 rounded-xl font-bold text-white shadow">Dasta yuborish</button>
+                        <button onclick="toggleAutoAlpha()" id="auto-alpha-btn" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 border rounded-xl font-semibold text-cyan-400">Avto: O'chiq</button>
                     </div>
                 </div>
             </div>
 
-            <!-- LAB 2: BOR ATOMI VA KVANT O'TISHLAR -->
+            <!-- LAB 2 -->
             <div id="lab-panel-2" class="hidden glass-card p-4 rounded-2xl space-y-3">
-                <div>
-                    <h3 class="text-sm font-bold text-cyan-600 dark:text-cyan-400">Borning Vodorod Atomi Modeli</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Elektronning statsionar orbitalar orasida kvant o'tishi</p>
-                </div>
-
+                <h3 class="text-sm font-bold text-cyan-600 dark:text-cyan-400">Borning Vodorod Atomi Modeli</h3>
                 <div class="relative rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-950">
                     <canvas id="bohrCanvas" width="360" height="250" class="w-full h-auto block"></canvas>
-                    <div id="bohr-photon-alert" class="absolute bottom-2 left-2 right-2 bg-slate-900/90 border border-cyan-500/40 px-3 py-1.5 rounded-lg text-[11px] text-center text-cyan-300">
-                        Orbital tugmasini bosib elektronni boshqa pog'onaga o'tkazing!
-                    </div>
+                    <div id="bohr-photon-alert" class="absolute bottom-2 left-2 right-2 bg-slate-900/90 border px-3 py-1.5 rounded-lg text-[11px] text-center text-cyan-300">Orbital tugmasini bosing!</div>
                 </div>
-
-                <div class="space-y-2">
-                    <div class="text-xs text-slate-600 dark:text-slate-300 font-medium">Kvant pog'onasini tanlang (n):</div>
-                    <div class="grid grid-cols-4 gap-2">
-                        <button onclick="setBohrOrbit(1)" id="bohr-n1" class="py-2 rounded-xl bg-cyan-600 text-white font-bold text-xs border border-cyan-400">
-                            n = 1<br><span class="text-[9px] font-normal">-13.6 eV</span>
-                        </button>
-                        <button onclick="setBohrOrbit(2)" id="bohr-n2" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700">
-                            n = 2<br><span class="text-[9px] font-normal">-3.40 eV</span>
-                        </button>
-                        <button onclick="setBohrOrbit(3)" id="bohr-n3" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700">
-                            n = 3<br><span class="text-[9px] font-normal">-1.51 eV</span>
-                        </button>
-                        <button onclick="setBohrOrbit(4)" id="bohr-n4" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700">
-                            n = 4<br><span class="text-[9px] font-normal">-0.85 eV</span>
-                        </button>
-                    </div>
+                <div class="grid grid-cols-4 gap-2">
+                    <button onclick="setBohrOrbit(1)" id="bohr-n1" class="py-2 rounded-xl bg-cyan-600 text-white font-bold text-xs">n=1</button>
+                    <button onclick="setBohrOrbit(2)" id="bohr-n2" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">n=2</button>
+                    <button onclick="setBohrOrbit(3)" id="bohr-n3" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">n=3</button>
+                    <button onclick="setBohrOrbit(4)" id="bohr-n4" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">n=4</button>
                 </div>
             </div>
 
-            <!-- LAB 3: RADIOAKTIV YEMIRILISH -->
+            <!-- LAB 3 -->
             <div id="lab-panel-3" class="hidden glass-card p-4 rounded-2xl space-y-3">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h3 class="text-sm font-bold text-amber-600 dark:text-amber-400">Radioaktiv Yemirilish Qonuni</h3>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">N(t) = N₀ · 2^(-t/T) jarayonini modellashtirish</p>
-                    </div>
-                    <button onclick="resetDecayLab()" class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 text-xs rounded-lg text-slate-700 dark:text-slate-300">
-                        <i class="fa-solid fa-rotate-right mr-1"></i>Qayta
-                    </button>
-                </div>
-
+                <h3 class="text-sm font-bold text-amber-600 dark:text-amber-400">Radioaktiv Yemirilish Qonuni</h3>
                 <div class="relative rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-950 p-2">
                     <canvas id="decayCanvas" width="340" height="200" class="w-full h-auto block"></canvas>
                 </div>
-
                 <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl border border-slate-300 dark:border-slate-800">
-                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Vaqt (t)</div>
-                        <div id="decay-time" class="font-bold">0.0 s</div>
-                    </div>
-                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl border border-slate-300 dark:border-slate-800">
-                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Aktiv yadro (N)</div>
-                        <div id="decay-active" class="font-bold text-amber-600 dark:text-amber-400">100%</div>
-                    </div>
-                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl border border-slate-300 dark:border-slate-800">
-                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Yemirilgan</div>
-                        <div id="decay-decayed" class="font-bold text-emerald-600 dark:text-emerald-400">0%</div>
-                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl">Vaqt: <span id="decay-time" class="font-bold">0.0s</span></div>
+                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl">Aktiv: <span id="decay-active" class="font-bold text-amber-400">100%</span></div>
+                    <div class="bg-slate-100 dark:bg-slate-900 p-2 rounded-xl">Yemirilgan: <span id="decay-decayed" class="font-bold text-emerald-400">0%</span></div>
                 </div>
-
-                <button onclick="startDecaySimulation()" id="decay-start-btn" class="w-full py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs rounded-xl shadow">
-                    <i class="fa-solid fa-radiation mr-1"></i> Yemirilishni boshlash
-                </button>
+                <button onclick="startDecaySimulation()" class="w-full py-2.5 bg-amber-600 text-white font-bold text-xs rounded-xl shadow">Boshlash</button>
             </div>
         </section>
 
-        <!-- ==================== 5. INTERAKTIV KROSSVORD ==================== -->
+        <!-- 5. 5 TA KROSSVORD (Javobsiz, to'liq interaktiv) -->
         <section id="tab-crossword" class="tab-content hidden space-y-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="text-lg font-bold"><i class="fa-solid fa-border-all text-amber-600 dark:text-amber-400 mr-2"></i>Fizik Krossvord</h2>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Atom va yadro fizikasi atamalarini toping</p>
+                    <h2 class="text-lg font-bold"><i class="fa-solid fa-border-all text-amber-600 dark:text-amber-400 mr-2"></i>Fizik Krossvordlar</h2>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">5 ta mavzuli boshqotirma to'plami</p>
                 </div>
                 <button onclick="checkCrossword()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow">
                     <i class="fa-solid fa-check-double mr-1"></i>Tekshirish
                 </button>
+            </div>
+
+            <!-- Krossvord tanlash menyusi (1 dan 5 gacha) -->
+            <div class="grid grid-cols-5 gap-1.5">
+                <button onclick="selectCrossword(0)" id="cw-nav-0" class="py-2 rounded-xl bg-amber-600 text-white font-bold text-xs">1-Mavzu</button>
+                <button onclick="selectCrossword(1)" id="cw-nav-1" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">2-Mavzu</button>
+                <button onclick="selectCrossword(2)" id="cw-nav-2" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">3-Mavzu</button>
+                <button onclick="selectCrossword(3)" id="cw-nav-3" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">4-Mavzu</button>
+                <button onclick="selectCrossword(4)" id="cw-nav-4" class="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">5-Mavzu</button>
             </div>
 
             <div class="glass-card p-3 rounded-2xl overflow-x-auto">
@@ -566,55 +541,24 @@
             <div id="cw-status" class="hidden p-3 rounded-xl text-xs font-bold text-center"></div>
 
             <div class="glass-card p-4 rounded-2xl space-y-2.5">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-xs font-bold uppercase text-amber-600 dark:text-amber-400">Krossvord savollari:</h3>
-                    <button onclick="fillCrosswordHints()" class="text-[11px] text-cyan-600 dark:text-cyan-400 hover:underline">
-                        <i class="fa-solid fa-lightbulb mr-1"></i>Yordam (Javoblar)
-                    </button>
-                </div>
-                <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 max-h-60 overflow-y-auto pr-1">
-                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-300 dark:border-slate-800">
-                        <b class="text-cyan-600 dark:text-cyan-400">1. (Gorizontal):</b> Atomning musbat zaryadlangan markaziy qismi (5 harf).
-                    </div>
-                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-300 dark:border-slate-800">
-                        <b class="text-cyan-600 dark:text-cyan-400">2. (Gorizontal):</b> Yadrodagi musbat zaryadli zarra (6 harf).
-                    </div>
-                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
-                        <b class="text-cyan-600 dark:text-cyan-400">3. (Gorizontal):</b> Elektromagnit nurlanish kvanti, yorug'lik zarrasi (5 harf).
-                    </div>
-                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
-                        <b class="text-cyan-600 dark:text-cyan-400">4. (Gorizontal):</b> Elektr zaryadiga ega bo'lmagan yadro zarrasi (7 harf).
-                    </div>
-                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
-                        <b class="text-purple-600 dark:text-purple-400">5. (Gorizontal):</b> Zaryad soni bir xil, ammo massa soni turlicha bo'lgan atomlar (6 harf).
-                    </div>
-                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
-                        <b class="text-purple-600 dark:text-purple-400">6. (Gorizontal):</b> Kvant mexanikasida fizik kattalikning eng kichik bo'linmas porsiyasi (5 harf).
-                    </div>
-                    <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-800">
-                        <b class="text-emerald-600 dark:text-emerald-400">7. (Gorizontal):</b> Kvant-mexanik majburiy nurlanish asosida ishlovchi optik generator (5 harf).
-                    </div>
-                </div>
+                <h3 id="cw-current-title" class="text-xs font-bold uppercase text-amber-600 dark:text-amber-400">Savollar:</h3>
+                <div id="cw-questions-list" class="space-y-2 text-xs text-slate-600 dark:text-slate-300 max-h-60 overflow-y-auto pr-1"></div>
             </div>
         </section>
 
     </main>
 
-    <!-- NAZARIYA MODAL OYNASI -->
+    <!-- NAZARIYA MODAL -->
     <div id="theory-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="glass-card w-full max-w-md rounded-t-3xl sm:rounded-2xl max-h-[85vh] flex flex-col border-t border-cyan-500/40">
             <div class="p-4 border-b border-slate-300 dark:border-slate-800 flex justify-between items-center">
                 <h3 id="modal-title" class="font-bold text-base text-cyan-600 dark:text-cyan-400">Mavzu nomi</h3>
-                <button onclick="closeTheoryModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-white flex items-center justify-center">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <button onclick="closeTheoryModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div id="modal-body" class="p-5 overflow-y-auto text-xs text-slate-700 dark:text-slate-200 space-y-3 leading-relaxed"></div>
             <div class="p-3 border-t border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/90 flex justify-between items-center rounded-b-2xl">
-                <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-[11px] text-cyan-600 dark:text-cyan-400 hover:underline">
-                    <i class="fa-solid fa-up-right-from-square mr-1"></i>Manba: tabiiy-fanlar.uz
-                </a>
-                <button onclick="closeTheoryModal()" class="px-4 py-1.5 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-white text-xs font-semibold rounded-lg">Yopish</button>
+                <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-[11px] text-cyan-600 dark:text-cyan-400 hover:underline"><i class="fa-solid fa-up-right-from-square mr-1"></i>tabiiy-fanlar.uz</a>
+                <button onclick="closeTheoryModal()" class="px-4 py-1.5 bg-slate-200 dark:bg-slate-800 text-xs font-semibold rounded-lg">Yopish</button>
             </div>
         </div>
     </div>
@@ -623,55 +567,40 @@
     <div id="info-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card w-full max-w-sm rounded-2xl p-5 space-y-3 border border-cyan-500/30">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-xl">
-                    <i class="fa-solid fa-atom"></i>
-                </div>
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-xl"><i class="fa-solid fa-atom"></i></div>
                 <div>
                     <h3 class="font-bold text-sm">Atom Fizikasi Mobil Ilovasi</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Versiya 2.1 (Dark/Light Mode)</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Versiya 2.5 (10 Masala + 5 Krossvord)</p>
                 </div>
             </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Ushbu interaktiv elektron o'quv qo'llanma talabalar va o'quvchilar uchun Atom va Yadro fizikasi fanini zamonaviy simulyatsiyalar hamda o'yinlar orqali o'zlashtirishga mo'ljallangan.
-            </p>
-            <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
-                <div><b>Ilmiy-metodik manba:</b> <a href="https://www.tabiiy-fanlar.uz/" target="_blank" class="text-cyan-600 dark:text-cyan-400 underline">www.tabiiy-fanlar.uz</a></div>
-                <div><b>Tuzilma:</b> Nazariya, Amaliyot, 3x Virtual Lab, Krossvord</div>
-            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Ushbu dastur talabalar va o'quvchilar uchun Atom va Yadro fizikasi fanidan mukammal interaktiv mobil qo'llanmadir.</p>
             <button onclick="closeInfoModal()" class="w-full py-2 bg-cyan-600 text-white font-bold text-xs rounded-xl">Tushunarli</button>
         </div>
     </div>
 
-    <!-- QUYI NAVIGATSIYA PANELI -->
+    <!-- QUYI NAVIGATSIYA -->
     <nav class="fixed bottom-0 left-0 right-0 z-40 glass-nav">
         <div class="max-w-md mx-auto grid grid-cols-5 py-2 px-2">
             <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center justify-center py-1 text-cyan-600 dark:text-cyan-400">
-                <i class="fa-solid fa-house text-lg mb-1"></i>
-                <span class="text-[10px] font-semibold">Asosiy</span>
+                <i class="fa-solid fa-house text-lg mb-1"></i><span class="text-[10px] font-semibold">Asosiy</span>
             </button>
-            <button onclick="switchTab('theory')" id="nav-theory" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
-                <i class="fa-solid fa-book-open text-lg mb-1"></i>
-                <span class="text-[10px] font-medium">Nazariya</span>
+            <button onclick="switchTab('theory')" id="nav-theory" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-book-open text-lg mb-1"></i><span class="text-[10px] font-medium">Nazariya</span>
             </button>
-            <button onclick="switchTab('lab')" id="nav-lab" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
-                <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 border-2 border-slate-100 dark:border-slate-900">
-                    <i class="fa-solid fa-flask text-base"></i>
-                </div>
+            <button onclick="switchTab('lab')" id="nav-lab" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400">
+                <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-white shadow-lg border-2 border-slate-100 dark:border-slate-900"><i class="fa-solid fa-flask text-base"></i></div>
                 <span class="text-[10px] font-semibold mt-0.5">Virt. Lab</span>
             </button>
-            <button onclick="switchTab('practice')" id="nav-practice" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
-                <i class="fa-solid fa-calculator text-lg mb-1"></i>
-                <span class="text-[10px] font-medium">Amaliyot</span>
+            <button onclick="switchTab('practice')" id="nav-practice" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-calculator text-lg mb-1"></i><span class="text-[10px] font-medium">Amaliyot</span>
             </button>
-            <button onclick="switchTab('crossword')" id="nav-crossword" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200">
-                <i class="fa-solid fa-puzzle-piece text-lg mb-1"></i>
-                <span class="text-[10px] font-medium">Krossvord</span>
+            <button onclick="switchTab('crossword')" id="nav-crossword" class="nav-btn flex flex-col items-center justify-center py-1 text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-puzzle-piece text-lg mb-1"></i><span class="text-[10px] font-medium">Krossvord</span>
             </button>
         </div>
     </nav>
 
     <script>
-        /* --- TUNGI VA KUNDUZGI REJIM MANTIG'I --- */
         function initTheme() {
             const savedTheme = localStorage.getItem("app_theme") || "dark";
             const bodyContainer = document.getElementById("body-container");
@@ -712,621 +641,379 @@
         }
 
         const theoryTopics = [
-            {
-                id: 1,
-                title: "1. Atom tuzilishi. Tomson va Rezerford modellari",
-                tag: "Atom modellari",
-                icon: "fa-atom",
-                color: "cyan",
-                summary: "J.J. Tomsonning «keksdagi mayiz» modeli va E. Rezerfordning alfa-zarralar sochilishi tajribasi hamda planetar model.",
-                content: `
-                    <p><b>J.J. Tomson modeli (1904-yil):</b> Elektron kashf etilgandan so'ng, Tomson atomni radiusi R ≈ 10⁻¹⁰ m bo'lgan musbat zaryadlangan shar va uning ichida muvozanatda joylashgan elektronlardan iborat deb tasavvur qildi.</p>
-                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2">
-                        <b class="text-cyan-600 dark:text-cyan-400">Rezerford tajribasi (1911-yil):</b> Yupqa oltin folgaga α-zarralar (⁴₂He yadrolari) dastasi yo'naltirildi. Zarralarning aksariyati to'g'ri o'tib ketdi, biroq kichik qismi katta burchaklarga (>90°) og'di.
-                    </div>
-                    <p><b>Planetar model xulosalari:</b></p>
-                    <ul class="list-disc pl-4 space-y-1">
-                        <li>Atom markazida juda kichik o'lchamli (10⁻¹⁵ – 10⁻¹⁴ m) musbat zaryadli <b>yadro</b> joylashgan.</li>
-                        <li>Atomning deyarli barcha massasi (99.9%) yadroda to'plangan.</li>
-                        <li>Elektronlar yadro atrofida xuddi sayyoralar Quyosh atrofida aylangani kabi harakat qiladi.</li>
-                    </ul>
-                `
-            },
-            {
-                id: 2,
-                title: "2. Niels Bor postulatlari va Vodorod spektri",
-                tag: "Kvant postulatlari",
-                icon: "fa-circle-nodes",
-                color: "purple",
-                summary: "Klassik elektrodinamika inqirozi, statsionar holatlar postulati, chastotalar qoidasi va energetik sathlar.",
-                content: `
-                    <p>Rezerfordning planetar modeli atomning turg'unligini tushuntira olmadi. 1913-yilda Daniyalik fizik <b>Niels Bor</b> kvant nazariyasiga asoslangan 2 ta postulatni ilgari surdi:</p>
-                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2 space-y-2">
-                        <p><b class="text-purple-600 dark:text-purple-400">I Postulat (Statsionar holatlar):</b> Atomda elektronlar harakatlanishi mumkin bo'lgan shunday statsionar orbitalar mavjudki, ularda harakatlanayotgan elektron elektromagnit to'lqin nurlatmaydi. Kvantlash sharti: m·v·r = n·ħ (n = 1, 2, 3...).</p>
-                        <p><b class="text-cyan-600 dark:text-cyan-400">II Postulat (Chastotalar qoidasi):</b> Elektron bir statsionar orbitadan (Eₙ) ikkinchisiga (Eₖ) o'tgandagina energiya kvanti (foton) nurlanadi yoki yutiladi: hν = Eₙ - Eₖ</p>
-                    </div>
-                    <p><b>Vodorod atomi energetik sathlari:</b> Eₙ = -13.6 / n² (eV). Asosiy holatda (n=1) energiya E₁ = -13.6 eV ga teng.</p>
-                `
-            },
-            {
-                id: 3,
-                title: "3. Korpuskulyar-to'lqin dualizmi. De-Broyl to'lqinlari",
-                tag: "Kvant mexanikasi",
-                icon: "fa-wave-square",
-                color: "emerald",
-                summary: "Mikrozarralarning ikki yoqlama tabiati, Lui de-Broyl formulasi va Geyzenbergning noaniqlik munosabati.",
-                content: `
-                    <p>1924-yilda <b>Lui de-Broyl</b> to'lqin-zarra dualizmi faqat yorug'lik (fotonlar) uchungina emas, balki barcha moddiy mikrozarralar (elektron, proton, atom) uchun ham xos degan gipotezani ilgari surdi.</p>
-                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2">
-                        <b class="text-emerald-600 dark:text-emerald-400">De-Broyl formulasi:</b> Har qanday p = m·v impulsli zarraga quyidagi to'lqin uzunligi mos keladi: λ = h / p = h / (m·v)
-                    </div>
-                    <p><b>Geyzenberg noaniqlik prinsipi (1927):</b> Mikrozarraning koordinatasi (x) va impulsi (pₓ) bir vaqtning o'zida mutlaq aniqlikda o'lchanishi mumkin emas: Δx · Δpₓ ≥ ħ / 2.</p>
-                `
-            },
-            {
-                id: 4,
-                title: "4. Kvant sonlari va Pauli prinsipi",
-                tag: "Elektron qobiqlar",
-                icon: "fa-layer-group",
-                color: "amber",
-                summary: "Bosh, orbital, magnit va spin kvant sonlari. Mendeleyev davriy sistemasining fizik asosi.",
-                content: `
-                    <p>Atomdagi elektronning kvant holati <b>4 ta kvant soni</b> bilan to'liq tavsiflanadi:</p>
-                    <ul class="list-disc pl-4 space-y-1.5">
-                        <li><b>Bosh kvant soni (n = 1, 2, 3...):</b> Elektronning umumiy energiyasini va qobiq (K, L, M, N) o'lchamini belgilaydi.</li>
-                        <li><b>Orbital kvant soni (l = 0, 1, ... n-1):</b> Impuls momentini va elektron buluti shaklini (s, p, d, f) belgilaydi.</li>
-                        <li><b>Magnit kvant soni (mₗ = -l ... +l):</b> Orbitalning fazodagi yo'nalishini belgilaydi.</li>
-                        <li><b>Spin kvant soni (mₛ = ±1/2):</b> Elektronning xususiy mexanik va magnit momentini ifodalaydi.</li>
-                    </ul>
-                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 mt-2">
-                        <b class="text-amber-600 dark:text-amber-400">Pauli taqiq prinsipi:</b> Atomda to'rttala kvant soni bir xil bo'lgan ikkita elektron bo'lishi mumkin emas. Har bir qobiqda maksimal N_max = 2n² ta elektron joylashadi.
-                    </div>
-                `
-            },
-            {
-                id: 5,
-                title: "5. Atom yadrosi tuzilishi va Bog'lanish energiyasi",
-                tag: "Yadro fizikasi",
-                icon: "fa-circle-radiation",
-                color: "rose",
-                summary: "Proton-neytron modeli, izotoplar, massa defekti va Eynshteynning energiya-massa munosabati.",
-                content: `
-                    <p>1932-yilda J. Chedvik <b>neytron</b>ni kashf etgach, D.D. Ivanenko va V. Geyzenberg yadroning proton-neytron modelini yaratdilar. Proton va neytronlar umumiy nom bilan <b>nuklonlar</b> deyiladi.</p>
-                    <ul class="list-disc pl-4 space-y-1">
-                        <li>Z — protonlar soni (tartib raqami).</li>
-                        <li>N — neytronlar soni.</li>
-                        <li>A = Z + N — massa soni (umumiy nuklonlar soni).</li>
-                    </ul>
-                    <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 my-2">
-                        <b class="text-rose-600 dark:text-rose-400">Massa defekti va bog'lanish energiyasi:</b> Yadro massasi har doim uni tashkil etuvchi erkin nuklonlar massalari yig'indisidan kichik bo'ladi:
-                        <br>Δm = Z·mₚ + (A - Z)·mₙ - M_yadro
-                        <br>E_bog' = Δm · c² ≈ Δm (m.a.b.) × 931.5 MeV
-                    </div>
-                `
-            },
-            {
-                id: 6,
-                title: "6. Radioaktivlik va Yadro reaksiyalari",
-                tag: "Yadro fizikasi",
-                icon: "fa-biohazard",
-                color: "emerald",
-                summary: "Alfa, beta va gamma nurlanishlar, siljish qoidalari, yarim yemirilish davri, bo'linish va termoyadro sintezi.",
-                content: `
-                    <p><b>Radioaktivlik</b> — beqaror yadrolarning o'z-o'zidan nurlanish chiqarib boshqa yadrolarga aylanish hodisasi (A. Bekkerel, M. va P. Kyurilar).</p>
-                    <ul class="list-disc pl-4 space-y-1">
-                        <li><b>α-yemirilish:</b> ᴬ_Z X → ᴬ⁻⁴_(Z-2) Y + ⁴₂He</li>
-                        <li><b>β⁻-yemirilish:</b> ᴬ_Z X → ᴬ_(Z+1) Y + e⁻ + ν̃ₑ</li>
-                        <li><b>γ-nurlanish:</b> Yadro uyg'ongan holatdan asosiy holatga o'tishida yuqori chastotali foton chiqaradi (A va Z o'zgarmaydi).</li>
-                    </ul>
-                    <p class="mt-2"><b>Radioaktiv yemirilish qonuni:</b> N(t) = N₀ · 2^(-t/T), bu yerda T — yarim yemirilish davri.</p>
-                `
-            }
+            { id: 1, title: "1. Atom tuzilishi. Tomson va Rezerford modellari", tag: "Atom modellari", icon: "fa-atom", color: "cyan", summary: "J.J. Tomson va E. Rezerford modellari.", content: `<p>J.J. Tomson modeli (1904-yil) va Rezerfordning alfa-zarralar sochilishi tajribasi (1911).</p>` },
+            { id: 2, title: "2. Niels Bor postulatlari va Vodorod spektri", tag: "Kvant postulatlari", icon: "fa-circle-nodes", color: "purple", summary: "Statsionar holatlar va chastotalar qoidasi.", content: `<p>Bor postulatlari va vodorod atomi spektrining qonuniyatlari.</p>` },
+            { id: 3, title: "3. Korpuskulyar-to'lqin dualizmi. De-Broyl", tag: "Kvant mexanikasi", icon: "fa-wave-square", color: "emerald", summary: "Lui de-Broyl to'lqinlari va noaniqlik prinsipi.", content: `<p>Mikrozarralarning to'lqin tabiati va de-Broyl formulasi.</p>` },
+            { id: 4, title: "4. Kvant sonlari va Pauli prinsipi", tag: "Elektron qobiqlar", icon: "fa-layer-group", color: "amber", summary: "Bosh, orbital, magnit va spin kvant sonlari.", content: `<p>Atomdagi elektronlar holatini belgilovchi 4 ta kvant soni.</p>` },
+            { id: 5, title: "5. Atom yadrosi tuzilishi va Bog'lanish energiyasi", tag: "Yadro fizikasi", icon: "fa-circle-radiation", color: "rose", summary: "Proton-neytron modeli va massa defekti.", content: `<p>Nuklonlar, yadro massa defekti va bog'lanish energiyasi.</p>` },
+            { id: 6, title: "6. Radioaktivlik va Yadro reaksiyalari", tag: "Yadro fizikasi", icon: "fa-biohazard", color: "emerald", summary: "Alfa, beta, gamma yemirilish va qonunlar.", content: `<p>Radioaktiv yemirilish qonuni va yadro reaksiyalari.</p>` }
         ];
 
         function renderTheoryList(filterText = "") {
             const container = document.getElementById("theory-list");
             container.innerHTML = "";
-            const filtered = theoryTopics.filter(t => 
-                t.title.toLowerCase().includes(filterText.toLowerCase()) || 
-                t.summary.toLowerCase().includes(filterText.toLowerCase())
-            );
+            const filtered = theoryTopics.filter(t => t.title.toLowerCase().includes(filterText.toLowerCase()));
             filtered.forEach(item => {
                 container.innerHTML += `
                     <div onclick="openTheoryModal(${item.id})" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-cyan-500/40 transition active:scale-[0.99]">
                         <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5">
-                                <i class="fa-solid ${item.icon}"></i>
-                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5"><i class="fa-solid ${item.icon}"></i></div>
                             <div class="flex-1">
                                 <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-cyan-700 dark:text-cyan-300">${item.tag}</span>
                                 <h3 class="text-sm font-bold mt-1">${item.title}</h3>
                                 <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">${item.summary}</p>
                             </div>
-                            <i class="fa-solid fa-chevron-right text-slate-400 text-xs self-center"></i>
                         </div>
                     </div>
                 `;
             });
         }
-
-        function filterTheory() {
-            const val = document.getElementById("theory-search").value;
-            renderTheoryList(val);
-        }
-
+        function filterTheory() { renderTheoryList(document.getElementById("theory-search").value); }
         function openTheoryModal(id) {
             const topic = theoryTopics.find(t => t.id === id);
-            if (!topic) return;
             document.getElementById("modal-title").innerText = topic.title;
             document.getElementById("modal-body").innerHTML = topic.content;
             document.getElementById("theory-modal").classList.remove("hidden");
         }
-
-        function closeTheoryModal() {
-            document.getElementById("theory-modal").classList.add("hidden");
-        }
-
+        function closeTheoryModal() { document.getElementById("theory-modal").classList.add("hidden"); }
         function openInfoModal() { document.getElementById("info-modal").classList.remove("hidden"); }
         function closeInfoModal() { document.getElementById("info-modal").classList.add("hidden"); }
 
         function switchTab(tabId) {
             document.querySelectorAll(".tab-content").forEach(el => el.classList.add("hidden"));
             document.getElementById("tab-" + tabId).classList.remove("hidden");
-
-            document.querySelectorAll(".nav-btn").forEach(btn => {
-                btn.classList.remove("text-cyan-600", "dark:text-cyan-400");
-                btn.classList.add("text-slate-500", "dark:text-slate-400");
-            });
-            const activeBtn = document.getElementById("nav-" + tabId);
-            if (activeBtn) {
-                activeBtn.classList.remove("text-slate-500", "dark:text-slate-400");
-                activeBtn.classList.add("text-cyan-600", "dark:text-cyan-400");
-            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         function switchPracticeSub(sub) {
             ['problems', 'calc', 'quiz'].forEach(s => {
                 document.getElementById('practice-' + s).classList.add('hidden');
-                const btn = document.getElementById('psub-' + s);
-                btn.className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
+                document.getElementById('psub-' + s).className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-white transition";
             });
             document.getElementById('practice-' + sub).classList.remove('hidden');
             document.getElementById('psub-' + sub).className = "py-2 rounded-lg bg-purple-600 text-white transition";
         }
-
-        function toggleSolution(id) {
-            const el = document.getElementById(id);
-            el.classList.toggle("hidden");
-        }
+        function toggleSolution(id) { document.getElementById(id).classList.toggle("hidden"); }
 
         function calculatePhoton() {
             const lambdaNm = parseFloat(document.getElementById("calc-lambda").value);
             if (!lambdaNm || lambdaNm <= 0) return;
-            const c = 3e8;
-            const h = 6.626e-34;
-            const lambdaM = lambdaNm * 1e-9;
-            const freq = c / lambdaM;
+            const c = 3e8, h = 6.626e-34;
+            const freq = c / (lambdaNm * 1e-9);
             const energyJ = h * freq;
-            const energyEv = energyJ / 1.602e-19;
-
             document.getElementById("calc-photon-res").innerHTML = `
-                <div>Chastota (ν): <span class="text-cyan-600 dark:text-cyan-400 font-bold">${(freq/1e14).toFixed(2)} × 10¹⁴ Hz</span></div>
-                <div>Energiya (Joul): <span class="text-purple-600 dark:text-purple-400 font-bold">${(energyJ*1e19).toFixed(2)} × 10⁻¹⁹ J</span></div>
-                <div>Energiya (eV): <span class="text-emerald-600 dark:text-emerald-400 font-bold">${energyEv.toFixed(2)} eV</span></div>
-            `;
-        }
-
-        function calculateRydberg() {
-            const ni = parseInt(document.getElementById("calc-ni").value);
-            const nf = parseInt(document.getElementById("calc-nf").value);
-            if (ni === nf) {
-                document.getElementById("calc-rydberg-res").innerHTML = `<div class="text-rose-600 dark:text-rose-400 font-bold">Boshlang'ich va oxirgi pog'onalar farqli bo'lishi kerak!</div>`;
-                return;
-            }
-            const Ei = -13.6 / (ni * ni);
-            const Ef = -13.6 / (nf * nf);
-            const dE = Math.abs(Ei - Ef);
-            const lambdaNm = 1240 / dE;
-            const type = ni > nf ? "Nurlanish (Emissiya)" : "Yutilish (Absorbsiya)";
-
-            document.getElementById("calc-rydberg-res").innerHTML = `
-                <div>Jarayon: <span class="text-amber-600 dark:text-amber-400 font-bold">${type}</span></div>
-                <div>Foton energiyasi (ΔE): <span class="text-emerald-600 dark:text-emerald-400 font-bold">${dE.toFixed(2)} eV</span></div>
-                <div>To'lqin uzunligi (λ): <span class="text-cyan-600 dark:text-cyan-400 font-bold">${lambdaNm.toFixed(1)} nm</span></div>
+                <div>Chastota: <span class="text-cyan-400 font-bold">${(freq/1e14).toFixed(2)} × 10¹⁴ Hz</span></div>
+                <div>Energiya: <span class="text-emerald-400 font-bold">${(energyJ/1.602e-19).toFixed(2)} eV</span></div>
             `;
         }
 
         const quizQuestions = [
-            {
-                q: "1. Rezerford tajribasida oltin folga qanday zarralar bilan bombardimon qilingan?",
-                opts: ["Elektronlar oqimi", "Alfa-zarralar (Geliy yadrolari)", "Neytronlar dastasi", "Gamma-kvantlar"],
-                ans: 1
-            },
-            {
-                q: "2. Vodorod atomining asosiy holatdagi (n=1) energiyasi qanchaga teng?",
-                opts: ["-3.4 eV", "-1.51 eV", "-13.6 eV", "+13.6 eV"],
-                ans: 2
-            },
-            {
-                q: "3. Yadro tarkibidagi proton va neytronlar umumiy nom bilan nima deb ataladi?",
-                opts: ["Izotoplar", "Pozitronlar", "Fotonlar", "Nuklonlar"],
-                ans: 3
-            },
-            {
-                q: "4. Atomda 4 ta kvant soni bir xil bo'lgan ikkita elektron bo'la olmasligi qaysi prinsip?",
-                opts: ["Pauli prinsipi", "Geyzenberg prinsipi", "Bor postulati", "De-Broyl gipotezasi"],
-                ans: 0
-            },
-            {
-                q: "5. 1 massa atom birligi (1 m.a.b.) taxminan necha MeV energiyaga ekvivalent?",
-                opts: ["100 MeV", "511 MeV", "931.5 MeV", "13.6 MeV"],
-                ans: 2
-            }
+            { q: "1. Rezerford tajribasida qanday zarralar ishlatilgan?", opts: ["Elektronlar", "Alfa-zarralar", "Neytronlar", "Protonlar"], ans: 1 },
+            { q: "2. Vodorod atomi n=1 holatdagi energiyasi?", opts: ["-3.4 eV", "-13.6 eV", "-1.51 eV", "0 eV"], ans: 1 },
+            { q: "3. Nuklonlar bu — ...", opts: ["Proton va neytronlar", "Faqat elektronlar", "Fotonlar", "Pozitronlar"], ans: 0 },
+            { q: "4. Pauli taqiq prinsipi nechta kvant soniga taalluqli?", opts: ["1 ta", "2 ta", "3 ta", "4 ta"], ans: 3 },
+            { q: "5. 1 m.a.b. energiyaviy ekvivalenti taxminan qancha?", opts: ["100 MeV", "511 MeV", "931.5 MeV", "13.6 MeV"], ans: 2 }
         ];
-
         let curQuiz = 0, quizScore = 0;
-
         function renderQuiz() {
             const item = quizQuestions[curQuiz];
-            document.getElementById("quiz-progress").innerText = `Savol: ${curQuiz + 1} / ${quizQuestions.length}`;
+            document.getElementById("quiz-progress").innerText = `Savol: ${curQuiz + 1} / 5`;
             document.getElementById("quiz-score").innerText = `Ball: ${quizScore}`;
             document.getElementById("quiz-question").innerText = item.q;
             document.getElementById("quiz-feedback").classList.add("hidden");
             document.getElementById("quiz-next-btn").classList.add("hidden");
-
             const optsDiv = document.getElementById("quiz-options");
             optsDiv.innerHTML = "";
             item.opts.forEach((opt, idx) => {
-                optsDiv.innerHTML += `
-                    <button onclick="checkQuizAnswer(${idx})" class="quiz-opt-btn w-full text-left p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-purple-500 text-xs transition shadow-sm">
-                        ${opt}
-                    </button>
-                `;
+                optsDiv.innerHTML += `<button onclick="checkQuizAnswer(${idx})" class="quiz-opt-btn w-full text-left p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs transition">${opt}</button>`;
             });
         }
-
         function checkQuizAnswer(selected) {
             const item = quizQuestions[curQuiz];
             const btns = document.querySelectorAll(".quiz-opt-btn");
             btns.forEach(b => b.disabled = true);
-
             const fb = document.getElementById("quiz-feedback");
             fb.classList.remove("hidden");
-
             if (selected === item.ans) {
                 quizScore += 20;
-                btns[selected].classList.add("bg-emerald-600/30", "border-emerald-500", "text-emerald-700", "dark:text-emerald-300");
-                fb.className = "p-3 rounded-xl text-xs font-medium bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30";
-                fb.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Barakalla! To'g'ri javob.`;
+                btns[selected].classList.add("bg-emerald-500/20", "border-emerald-500");
+                fb.className = "p-3 rounded-xl text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+                fb.innerHTML = `Barakalla! To'g'ri javob.`;
             } else {
-                btns[selected].classList.add("bg-rose-600/30", "border-rose-500", "text-rose-700", "dark:text-rose-300");
-                btns[item.ans].classList.add("bg-emerald-600/30", "border-emerald-500", "text-emerald-700", "dark:text-emerald-300");
-                fb.className = "p-3 rounded-xl text-xs font-medium bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/30";
-                fb.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> Noto'g'ri! To'g'ri javob belgilandi.`;
+                btns[selected].classList.add("bg-rose-500/20", "border-rose-500");
+                btns[item.ans].classList.add("bg-emerald-500/20", "border-emerald-500");
+                fb.className = "p-3 rounded-xl text-xs font-medium bg-rose-500/20 text-rose-300 border border-rose-500/30";
+                fb.innerHTML = `Noto'g'ri!`;
             }
             document.getElementById("quiz-score").innerText = `Ball: ${quizScore}`;
             document.getElementById("quiz-next-btn").classList.remove("hidden");
         }
-
         function nextQuizQuestion() {
-            curQuiz++;
-            if (curQuiz >= quizQuestions.length) {
-                curQuiz = 0;
-                quizScore = 0;
-            }
+            curQuiz = (curQuiz + 1) % quizQuestions.length;
             renderQuiz();
         }
 
         function switchLab(num) {
             [1, 2, 3].forEach(n => {
                 document.getElementById("lab-panel-" + n).classList.add("hidden");
-                document.getElementById("lab-btn-" + n).className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
+                document.getElementById("lab-btn-" + n).className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 transition";
             });
             document.getElementById("lab-panel-" + num).classList.remove("hidden");
             document.getElementById("lab-btn-" + num).className = "py-2 rounded-lg bg-emerald-600 text-white transition";
         }
 
+        // Rezerford Lab
         const rCanvas = document.getElementById("rutherfordCanvas");
         const rCtx = rCanvas.getContext("2d");
-        let alphas = [];
-        let totalAlphas = 0, deflectedAlphas = 0;
-        let ruthZ = 79, ruthE = 5;
-        let autoAlphaInterval = null;
-
-        function updateRuthParams() {
-            ruthZ = parseInt(document.getElementById("ruth-z").value);
-            ruthE = parseInt(document.getElementById("ruth-e").value);
-            document.getElementById("ruth-z-val").innerText = ruthZ + (ruthZ === 79 ? " (Oltin)" : "");
-            document.getElementById("ruth-e-val").innerText = ruthE + " MeV";
-        }
-
+        let alphas = [], totalAlphas = 0, deflectedAlphas = 0, ruthZ = 79, ruthE = 5, autoAlphaInterval = null;
+        function updateRuthParams() { ruthZ = parseInt(document.getElementById("ruth-z").value); document.getElementById("ruth-z-val").innerText = ruthZ + " (Oltin)"; }
         function fireAlphaWave() {
             for (let i = 0; i < 7; i++) {
-                const yOffset = (Math.random() - 0.5) * 190;
-                alphas.push({
-                    x: 10,
-                    y: rCanvas.height / 2 + yOffset,
-                    vx: 2.5 + ruthE * 0.25,
-                    vy: 0,
-                    trail: [],
-                    countedDeflect: false
-                });
+                alphas.push({ x: 10, y: rCanvas.height / 2 + (Math.random() - 0.5) * 190, vx: 2.5 + ruthE * 0.25, vy: 0, trail: [], countedDeflect: false });
                 totalAlphas++;
             }
             document.getElementById("alpha-count").innerText = totalAlphas;
         }
-
         function toggleAutoAlpha() {
-            const btn = document.getElementById("auto-alpha-btn");
-            if (autoAlphaInterval) {
-                clearInterval(autoAlphaInterval);
-                autoAlphaInterval = null;
-                btn.innerText = "Avto: O'chiq";
-            } else {
-                autoAlphaInterval = setInterval(fireAlphaWave, 800);
-                btn.innerText = "Avto: Yoqiq";
-            }
+            if (autoAlphaInterval) { clearInterval(autoAlphaInterval); autoAlphaInterval = null; event.target.innerText = "Avto: O'chiq"; }
+            else { autoAlphaInterval = setInterval(fireAlphaWave, 800); event.target.innerText = "Avto: Yoqiq"; }
         }
-
-        function resetRutherford() {
-            alphas = [];
-            totalAlphas = 0;
-            deflectedAlphas = 0;
-            document.getElementById("alpha-count").innerText = "0";
-            document.getElementById("alpha-deflected").innerText = "0";
-        }
-
+        function resetRutherford() { alphas = []; totalAlphas = 0; deflectedAlphas = 0; document.getElementById("alpha-count").innerText = "0"; document.getElementById("alpha-deflected").innerText = "0"; }
         function animateRutherford() {
-            rCtx.fillStyle = "#020617";
-            rCtx.fillRect(0, 0, rCanvas.width, rCanvas.height);
-
-            const nx = rCanvas.width / 2 + 30;
-            const ny = rCanvas.height / 2;
-
-            rCtx.strokeStyle = "rgba(245, 158, 11, 0.12)";
-            rCtx.lineWidth = 1;
-            [25, 50, 80].forEach(rad => {
-                rCtx.beginPath();
-                rCtx.arc(nx, ny, rad, 0, Math.PI * 2);
-                rCtx.stroke();
-            });
-
-            const nucRadius = 6 + (ruthZ / 25);
-            const grad = rCtx.createRadialGradient(nx, ny, 2, nx, ny, nucRadius * 2);
-            grad.addColorStop(0, "#fbbf24");
-            grad.addColorStop(1, "rgba(245, 158, 11, 0)");
-            rCtx.fillStyle = grad;
-            rCtx.beginPath();
-            rCtx.arc(nx, ny, nucRadius * 2, 0, Math.PI * 2);
-            rCtx.fill();
-
-            rCtx.fillStyle = "#f59e0b";
-            rCtx.beginPath();
-            rCtx.arc(nx, ny, nucRadius, 0, Math.PI * 2);
-            rCtx.fill();
-
-            const kForce = (ruthZ * 2.2) / ruthE;
+            rCtx.fillStyle = "#020617"; rCtx.fillRect(0, 0, rCanvas.width, rCanvas.height);
+            const nx = rCanvas.width / 2 + 30, ny = rCanvas.height / 2;
+            rCtx.fillStyle = "#f59e0b"; rCtx.beginPath(); rCtx.arc(nx, ny, 6, 0, Math.PI * 2); rCtx.fill();
             alphas.forEach(p => {
-                p.trail.push({ x: p.x, y: p.y });
-                if (p.trail.length > 35) p.trail.shift();
-
-                const dx = p.x - nx;
-                const dy = p.y - ny;
-                const distSq = dx * dx + dy * dy + 40;
-                const dist = Math.sqrt(distSq);
-
-                const f = kForce / distSq;
-                p.vx += (dx / dist) * f * 12;
-                p.vy += (dy / dist) * f * 12;
-
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (!p.countedDeflect && (Math.abs(p.vy) > 1.2 || p.vx < 0)) {
-                    p.countedDeflect = true;
-                    deflectedAlphas++;
-                    document.getElementById("alpha-deflected").innerText = deflectedAlphas;
-                }
-
-                rCtx.strokeStyle = "rgba(56, 189, 248, 0.6)";
-                rCtx.lineWidth = 1.5;
-                rCtx.beginPath();
-                p.trail.forEach((t, idx) => {
-                    if (idx === 0) rCtx.moveTo(t.x, t.y);
-                    else rCtx.lineTo(t.x, t.y);
-                });
+                p.trail.push({ x: p.x, y: p.y }); if (p.trail.length > 30) p.trail.shift();
+                const dx = p.x - nx, dy = p.y - ny, distSq = dx * dx + dy * dy + 40, dist = Math.sqrt(distSq);
+                const f = (ruthZ * 2.2) / (ruthE * distSq);
+                p.vx += (dx / dist) * f * 12; p.vy += (dy / dist) * f * 12;
+                p.x += p.vx; p.y += p.vy;
+                if (!p.countedDeflect && (Math.abs(p.vy) > 1.2 || p.vx < 0)) { p.countedDeflect = true; deflectedAlphas++; document.getElementById("alpha-deflected").innerText = deflectedAlphas; }
+                rCtx.strokeStyle = "rgba(56, 189, 248, 0.6)"; rCtx.beginPath();
+                p.trail.forEach((t, idx) => { if (idx === 0) rCtx.moveTo(t.x, t.y); else rCtx.lineTo(t.x, t.y); });
                 rCtx.stroke();
-
-                rCtx.fillStyle = "#38bdf8";
-                rCtx.beginPath();
-                rCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-                rCtx.fill();
+                rCtx.fillStyle = "#38bdf8"; rCtx.beginPath(); rCtx.arc(p.x, p.y, 3, 0, Math.PI * 2); rCtx.fill();
             });
-
-            alphas = alphas.filter(p => p.x > -20 && p.x < rCanvas.width + 20 && p.y > -20 && p.y < rCanvas.height + 20);
+            alphas = alphas.filter(p => p.x > -20 && p.x < rCanvas.width + 20);
             requestAnimationFrame(animateRutherford);
         }
 
+        // Bor Lab
         const bCanvas = document.getElementById("bohrCanvas");
         const bCtx = bCanvas.getContext("2d");
-        let bohrN = 1, bohrAngle = 0;
-        let photonWave = null;
+        let bohrN = 1, bohrAngle = 0, photonWave = null;
         const orbitRadii = [0, 26, 50, 76, 102];
-
         function setBohrOrbit(newN) {
             if (newN === bohrN) return;
-            const oldN = bohrN;
-            bohrN = newN;
-
+            const oldN = bohrN; bohrN = newN;
             [1, 2, 3, 4].forEach(n => {
-                const btn = document.getElementById("bohr-n" + n);
-                btn.className = n === bohrN 
-                    ? "py-2 rounded-xl bg-cyan-600 text-white font-bold text-xs border border-cyan-400"
-                    : "py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-700";
+                document.getElementById("bohr-n" + n).className = n === bohrN ? "py-2 rounded-xl bg-cyan-600 text-white font-bold text-xs" : "py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs";
             });
-
-            const Ei = -13.6 / (oldN * oldN);
-            const Ef = -13.6 / (newN * newN);
-            const dE = Math.abs(Ei - Ef).toFixed(2);
-            const alertBox = document.getElementById("bohr-photon-alert");
-
-            if (newN < oldN) {
-                alertBox.innerHTML = `<span class="text-emerald-400 font-bold">Nurlanish:</span> n=${oldN} → n=${newN} | Foton ajraldi: <b>hν = ${dE} eV</b>`;
-                photonWave = { x: bCanvas.width/2, y: bCanvas.height/2, r: orbitRadii[oldN], color: "#34d399", alpha: 1 };
-            } else {
-                alertBox.innerHTML = `<span class="text-amber-400 font-bold">Yutilish:</span> n=${oldN} → n=${newN} | Kvant yutildi: <b>hν = ${dE} eV</b>`;
-                photonWave = { x: bCanvas.width/2, y: bCanvas.height/2, r: orbitRadii[newN], color: "#fbbf24", alpha: 1 };
-            }
+            const dE = Math.abs((-13.6/(oldN*oldN)) - (-13.6/(newN*newN))).toFixed(2);
+            document.getElementById("bohr-photon-alert").innerHTML = `O'tish n=${oldN} → n=${newN} | ΔE = <b>${dE} eV</b>`;
+            photonWave = { r: orbitRadii[oldN], color: newN < oldN ? "#34d399" : "#fbbf24", alpha: 1 };
         }
-
         function animateBohr() {
-            bCtx.fillStyle = "#020617";
-            bCtx.fillRect(0, 0, bCanvas.width, bCanvas.height);
-            const cx = bCanvas.width / 2;
-            const cy = bCanvas.height / 2 - 10;
-
+            bCtx.fillStyle = "#020617"; bCtx.fillRect(0, 0, bCanvas.width, bCanvas.height);
+            const cx = bCanvas.width / 2, cy = bCanvas.height / 2 - 10;
             for (let n = 1; n <= 4; n++) {
-                bCtx.strokeStyle = n === bohrN ? "rgba(56, 189, 248, 0.75)" : "rgba(148, 163, 184, 0.2)";
-                bCtx.lineWidth = n === bohrN ? 2 : 1;
-                bCtx.setLineDash(n === bohrN ? [] : [4, 4]);
-                bCtx.beginPath();
-                bCtx.arc(cx, cy, orbitRadii[n], 0, Math.PI * 2);
-                bCtx.stroke();
+                bCtx.strokeStyle = n === bohrN ? "#38bdf8" : "rgba(148, 163, 184, 0.2)";
+                bCtx.beginPath(); bCtx.arc(cx, cy, orbitRadii[n], 0, Math.PI * 2); bCtx.stroke();
             }
-            bCtx.setLineDash([]);
-
-            bCtx.fillStyle = "#ef4444";
-            bCtx.beginPath();
-            bCtx.arc(cx, cy, 8, 0, Math.PI * 2);
-            bCtx.fill();
-            bCtx.fillStyle = "#fff";
-            bCtx.font = "bold 9px Inter";
-            bCtx.textAlign = "center";
-            bCtx.fillText("p+", cx, cy + 3);
-
+            bCtx.fillStyle = "#ef4444"; bCtx.beginPath(); bCtx.arc(cx, cy, 8, 0, Math.PI * 2); bCtx.fill();
             bohrAngle += 0.05 / bohrN;
-            const r = orbitRadii[bohrN];
-            const ex = cx + Math.cos(bohrAngle) * r;
-            const ey = cy + Math.sin(bohrAngle) * r;
-
-            bCtx.shadowColor = "#38bdf8";
-            bCtx.shadowBlur = 12;
-            bCtx.fillStyle = "#38bdf8";
-            bCtx.beginPath();
-            bCtx.arc(ex, ey, 5.5, 0, Math.PI * 2);
-            bCtx.fill();
-            bCtx.shadowBlur = 0;
-
+            const r = orbitRadii[bohrN], ex = cx + Math.cos(bohrAngle) * r, ey = cy + Math.sin(bohrAngle) * r;
+            bCtx.fillStyle = "#38bdf8"; bCtx.beginPath(); bCtx.arc(ex, ey, 5.5, 0, Math.PI * 2); bCtx.fill();
             if (photonWave) {
-                bCtx.strokeStyle = photonWave.color;
-                bCtx.globalAlpha = photonWave.alpha;
-                bCtx.lineWidth = 2.5;
-                bCtx.beginPath();
-                bCtx.arc(cx, cy, photonWave.r, 0, Math.PI * 2);
-                bCtx.stroke();
-                bCtx.globalAlpha = 1;
-                photonWave.r += 2.2;
-                photonWave.alpha -= 0.025;
+                bCtx.strokeStyle = photonWave.color; bCtx.globalAlpha = photonWave.alpha; bCtx.lineWidth = 2.5;
+                bCtx.beginPath(); bCtx.arc(cx, cy, photonWave.r, 0, Math.PI * 2); bCtx.stroke();
+                bCtx.globalAlpha = 1; photonWave.r += 2.2; photonWave.alpha -= 0.025;
                 if (photonWave.alpha <= 0) photonWave = null;
             }
-
             requestAnimationFrame(animateBohr);
         }
 
+        // Yemirilish Lab
         const dCanvas = document.getElementById("decayCanvas");
         const dCtx = dCanvas.getContext("2d");
-        let nuclei = [];
-        let decayTimer = 0;
-        let decayRunning = false;
-
+        let nuclei = [], decayTimer = 0, decayRunning = false;
         function initDecayNuclei() {
             nuclei = [];
-            const cols = 15, rows = 8;
-            for (let r = 0; r < rows; r++) {
-                for (let c = 0; c < cols; c++) {
-                    nuclei.push({
-                        x: 24 + c * 21,
-                        y: 24 + r * 21,
-                        decayed: false
-                    });
+            for (let r = 0; r < 8; r++) {
+                for (let c = 0; c < 15; c++) {
+                    nuclei.push({ x: 24 + c * 21, y: 24 + r * 21, decayed: false });
                 }
             }
-            decayTimer = 0;
-            decayRunning = false;
-            drawDecayCanvas();
-            updateDecayStats();
+            decayTimer = 0; decayRunning = false; drawDecayCanvas(); updateDecayStats();
         }
-
         function drawDecayCanvas() {
-            dCtx.fillStyle = "#020617";
-            dCtx.fillRect(0, 0, dCanvas.width, dCanvas.height);
+            dCtx.fillStyle = "#020617"; dCtx.fillRect(0, 0, dCanvas.width, dCanvas.height);
             nuclei.forEach(n => {
                 dCtx.fillStyle = n.decayed ? "#10b981" : "#f59e0b";
-                dCtx.beginPath();
-                dCtx.arc(n.x, n.y, 6.5, 0, Math.PI * 2);
-                dCtx.fill();
+                dCtx.beginPath(); dCtx.arc(n.x, n.y, 6.5, 0, Math.PI * 2); dCtx.fill();
             });
         }
-
         function updateDecayStats() {
             const active = nuclei.filter(n => !n.decayed).length;
-            const total = nuclei.length;
-            const pct = Math.round((active / total) * 100);
-            document.getElementById("decay-time").innerText = decayTimer.toFixed(1) + " s";
-            document.getElementById("decay-active").innerText = pct + "% (" + active + ")";
+            const pct = Math.round((active / nuclei.length) * 100);
+            document.getElementById("decay-time").innerText = decayTimer.toFixed(1) + "s";
+            document.getElementById("decay-active").innerText = pct + "%";
             document.getElementById("decay-decayed").innerText = (100 - pct) + "%";
         }
-
         function startDecaySimulation() {
             if (decayRunning) return;
             decayRunning = true;
             const interval = setInterval(() => {
                 if (!decayRunning) { clearInterval(interval); return; }
                 decayTimer += 0.2;
-                nuclei.forEach(n => {
-                    if (!n.decayed && Math.random() < 0.035) {
-                        n.decayed = true;
-                    }
-                });
-                drawDecayCanvas();
-                updateDecayStats();
-                if (nuclei.every(n => n.decayed)) {
-                    decayRunning = false;
-                    clearInterval(interval);
-                }
+                nuclei.forEach(n => { if (!n.decayed && Math.random() < 0.035) n.decayed = true; });
+                drawDecayCanvas(); updateDecayStats();
+                if (nuclei.every(n => n.decayed)) { decayRunning = false; clearInterval(interval); }
             }, 200);
         }
 
-        function resetDecayLab() {
-            initDecayNuclei();
-        }
-
-        const cwWords = [
-            { num: 1, word: "YADRO", row: 0, col: 2 },
-            { num: 2, word: "PROTON", row: 1, col: 1 },
-            { num: 3, word: "FOTON", row: 2, col: 2 },
-            { num: 4, word: "NEYTRON", row: 3, col: 0 },
-            { num: 5, word: "IZOTOP", row: 4, col: 1 },
-            { num: 6, word: "KVANT", row: 5, col: 2 },
-            { num: 7, word: "LAZER", row: 6, col: 2 }
+        /* --- 5 TA KROSSVORD BAZASI (Javobsiz va to'liq interaktiv) --- */
+        const crosswordSets = [
+            {
+                title: "1-Mavzu: Atom tuzilishi va modellar",
+                words: [
+                    { num: 1, word: "YADRO", row: 0, col: 2 },
+                    { num: 2, word: "PROTON", row: 1, col: 1 },
+                    { num: 3, word: "FOTON", row: 2, col: 2 },
+                    { num: 4, word: "NEYTRON", row: 3, col: 0 },
+                    { num: 5, word: "IZOTOP", row: 4, col: 1 },
+                    { num: 6, word: "KVANT", row: 5, col: 2 },
+                    { num: 7, word: "LAZER", row: 6, col: 2 }
+                ],
+                hints: [
+                    "1. Atomning musbat zaryadlangan markaziy qismi (5 harf).",
+                    "2. Yadrodagi musbat zaryadli asosiy zarra (6 harf).",
+                    "3. Elektromagnit nurlanish kvanti, yorug'lik zarrasi (5 harf).",
+                    "4. Elektr zaryadiga ega bo'lmagan yadro zarrasi (7 harf).",
+                    "5. Zaryad soni bir xil, massa soni turlicha bo'lgan atomlar (6 harf).",
+                    "6. Kvant mexanikasida energiyaning eng kichik porsiyasi (5 harf).",
+                    "7. Majburiy nurlanishga asoslangan optik generator (5 harf)."
+                ]
+            },
+            {
+                title: "2-Mavzu: Bor postulatlari va spektrlar",
+                words: [
+                    { num: 1, word: "BOR", row: 0, col: 3 },
+                    { num: 2, word: "SPEKTR", row: 1, col: 1 },
+                    { num: 3, word: "BALMER", row: 2, col: 1 },
+                    { num: 4, word: "LAYMAN", row: 3, col: 1 },
+                    { num: 5, word: "ORBITA", row: 4, col: 1 },
+                    { num: 6, word: "NURLAN", row: 5, col: 1 },
+                    { num: 7, word: "YUTILISH", row: 6, col: 0 }
+                ],
+                hints: [
+                    "1. Atom modelini yaratgan mashhur daniyalik fizik (3 harf).",
+                    "2. Yorug'lik chastotalari bo'yicha taqsimoti (6 harf).",
+                    "3. Vodorod spektrining ko'rinadigan qismidagi seriya (6 harf).",
+                    "4. Vodorod spektrining ultraqizil/ultrabinafsha sohasidagi seriya (6 harf).",
+                    "5. Elektron harakatlanadigan doiraviy yo'l (6 harf).",
+                    "6. Foton chiqarish jarayoni (6 harf).",
+                    "7. Energiyaning atom tomonidan qabul qilinishi (8 harf)."
+                ]
+            },
+            {
+                title: "3-Mavzu: Kvant mexanikasi va to'lqinlar",
+                words: [
+                    { num: 1, word: "DEBROYL", row: 0, col: 0 },
+                    { num: 2, word: "DUALIZM", row: 1, col: 1 },
+                    { num: 3, word: "IMPULS", row: 2, col: 1 },
+                    { num: 4, word: "TOLQIN", row: 3, col: 1 },
+                    { num: 5, word: "PLANCK", row: 4, col: 1 },
+                    { num: 6, word: "GEYZENB", row: 5, col: 0 },
+                    { num: 7, word: "FOTON", row: 6, col: 1 }
+                ],
+                hints: [
+                    "1. Moddiy zarrachalarning to'lqin xususiyatini ochgan olim (7 harf).",
+                    "2. Zarralarning ham to'lqin, ham korpuskulyar xossaga egaligi (7 harf).",
+                    "3. Massa va tezlik ko'paytmasi (6 harf).",
+                    "4. Zarraga mos keluvchi fazoviy tebranish (6 harf).",
+                    "5. Ta'sir doimiysini kiritgan nemis fizigi (6 harf).",
+                    "6. Noaniqlik prinsipining muallifi (7 harf).",
+                    "7. Elektromagnit maydon kvanti (5 harf)."
+                ]
+            },
+            {
+                title: "4-Mavzu: Elektron qobiqlar va kvant sonlari",
+                words: [
+                    { num: 1, word: "BOSH", row: 0, col: 2 },
+                    { num: 2, word: "ORBITAL", row: 1, col: 0 },
+                    { num: 3, word: "MAGNIT", row: 2, col: 1 },
+                    { num: 4, word: "SPIN", row: 3, col: 2 },
+                    { num: 5, word: "PAULI", row: 4, col: 1 },
+                    { num: 6, word: "QOBIQ", row: 5, col: 1 },
+                    { num: 7, word: "ELEKTRON", row: 6, col: 0 }
+                ],
+                hints: [
+                    "1. n bilan belgilanuvchi kvant soni (4 harf).",
+                    "2. Elektronning fazoda uchrash ehtimoli yuqori bo'lgan soha (7 harf).",
+                    "3. mₗ bilan belgilanuvchi kvant soni (6 harf).",
+                    "4. Elektronning o'z o'qi atrofida aylanish momenti (4 harf).",
+                    "5. Taqiq prinsipining muallifi (5 harf).",
+                    "6. Atomdagi elektron qatlamlari (5 harf).",
+                    "7. Manfiy zaryadli eng yengil lepton (8 harf)."
+                ]
+            },
+            {
+                title: "5-Mavzu: Yadro fizikasi va radioaktivlik",
+                words: [
+                    { num: 1, word: "URAN", row: 0, col: 2 },
+                    { num: 2, word: "TORIY", row: 1, col: 1 },
+                    { num: 3, word: "ALPHA", row: 2, col: 1 },
+                    { num: 4, word: "BETA", row: 3, col: 2 },
+                    { num: 5, word: "GAMMA", row: 4, col: 1 },
+                    { num: 6, word: "REAKTOR", row: 5, col: 0 },
+                    { num: 7, word: "SINTEZ", row: 6, col: 1 }
+                ],
+                hints: [
+                    "1. Tabiiy radioaktiv elementlarning asosi (92-element) (4 harf).",
+                    "2. Oqsil va radioaktiv zanjir qatnashchisi bo'lgan 90-element (5 harf).",
+                    "3. Geliy yadrosidan iborat nurlanish turi (5 harf).",
+                    "4. Tez elektronlar oqimidan iborat nurlanish (4 harf).",
+                    "5. Yuqori chastotali elektromagnit nurlanish (5 harf).",
+                    "6. Zanjir reaksiya boshqariladigan qurilma (7 harf).",
+                    "7. Yengil yadrolarning qo'shilish jarayoni (6 harf)."
+                ]
+            }
         ];
 
-        function renderCrossword() {
+        let activeCwIndex = 0;
+
+        function selectCrossword(idx) {
+            activeCwIndex = idx;
+            for (let i = 0; i < 5; i++) {
+                document.getElementById("cw-nav-" + i).className = i === idx ? "py-2 rounded-xl bg-amber-600 text-white font-bold text-xs" : "py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs";
+            }
+            renderActiveCrossword();
+        }
+
+        function renderActiveCrossword() {
+            const set = crosswordSets[activeCwIndex];
+            document.getElementById("cw-current-title").innerText = set.title + " savollari:";
+            
+            const qList = document.getElementById("cw-questions-list");
+            qList.innerHTML = "";
+            set.hints.forEach(h => {
+                qList.innerHTML += `<div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-900/70 border border-slate-300 dark:border-slate-800">${h}</div>`;
+            });
+
             const gridEl = document.getElementById("crossword-grid");
             let html = `<div class="space-y-1.5">`;
-            cwWords.forEach((item) => {
+            set.words.forEach((item) => {
                 html += `<div class="flex items-center justify-center space-x-1">`;
                 html += `<span class="w-5 text-xs font-bold text-amber-600 dark:text-amber-400 text-right mr-1">${item.num}.</span>`;
                 for (let c = 0; c < 8; c++) {
                     if (c >= item.col && c < item.col + item.word.length) {
                         const charIdx = c - item.col;
                         const expectedChar = item.word[charIdx];
-                        const isHighlight = (c === 3);
                         html += `
                             <input type="text" maxlength="1" 
                                 data-ans="${expectedChar}" 
-                                class="cw-cell bg-slate-100 dark:bg-slate-900 border ${isHighlight ? 'border-cyan-500/60' : 'border-slate-300 dark:border-slate-700'} text-slate-900 dark:text-white shadow-sm"
+                                class="cw-cell bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white shadow-sm"
                                 oninput="moveNextCell(this)">
                         `;
                     } else {
@@ -1337,6 +1024,7 @@
             });
             html += `</div>`;
             gridEl.innerHTML = html;
+            document.getElementById("cw-status").classList.add("hidden");
         }
 
         function moveNextCell(input) {
@@ -1357,11 +1045,11 @@
                 const val = inp.value.trim().toUpperCase();
                 const ans = inp.getAttribute("data-ans");
                 if (val === ans) {
-                    inp.classList.remove("border-slate-300", "dark:border-slate-700", "border-rose-500", "bg-rose-950/40");
+                    inp.classList.remove("border-slate-300", "dark:border-slate-700", "border-rose-500");
                     inp.classList.add("border-emerald-500", "bg-emerald-100", "dark:bg-emerald-950/40", "text-emerald-700", "dark:text-emerald-300");
                     correctCount++;
                 } else {
-                    inp.classList.remove("border-slate-300", "dark:border-slate-700", "border-emerald-500", "bg-emerald-950/40");
+                    inp.classList.remove("border-slate-300", "dark:border-slate-700", "border-emerald-500");
                     inp.classList.add("border-rose-500", "bg-rose-100", "dark:bg-rose-950/40", "text-rose-700", "dark:text-rose-300");
                 }
             });
@@ -1370,25 +1058,18 @@
             status.classList.remove("hidden");
             if (correctCount === inputs.length) {
                 status.className = "p-3 rounded-xl text-xs font-bold text-center bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30";
-                status.innerHTML = `Tabriklaymiz! Barcha ${inputs.length} ta harfni to'g'ri topdingiz!`;
+                status.innerHTML = `Tabriklaymiz! Joriy krossvord to'g'ri bajarildi!`;
             } else {
                 status.className = "p-3 rounded-xl text-xs font-bold text-center bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30";
-                status.innerHTML = `Natija: ${correctCount} / ${inputs.length} ta harf to'g'ri. Qizil kataklarni qayta tekshiring.`;
+                status.innerHTML = `Natija: ${correctCount} / ${inputs.length} ta harf to'g'ri. Qizil kataklarni tekshiring.`;
             }
-        }
-
-        function fillCrosswordHints() {
-            document.querySelectorAll(".cw-cell").forEach(inp => {
-                inp.value = inp.getAttribute("data-ans");
-            });
-            checkCrossword();
         }
 
         window.onload = () => {
             initTheme();
             renderTheoryList();
             renderQuiz();
-            renderCrossword();
+            selectCrossword(0);
             fireAlphaWave();
             animateRutherford();
             animateBohr();
